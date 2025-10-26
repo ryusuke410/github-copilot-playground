@@ -6,39 +6,63 @@
 github-copilot-playground/
 ├── .agdocs/                    # AI agent documentation
 │   ├── commands/               # Command definitions for AI workflows
+│   │   ├── yeah.md
+│   │   ├── commit-push-pr.md
+│   │   ├── review-pr.md
+│   │   ├── create-dev-branch.md
+│   │   ├── add-command.md
 │   │   ├── dev-log.md
 │   │   ├── initialize-memory-bank.md
-│   │   └── yeah.md
+│   │   ├── update-memory-bank-targeted.md
+│   │   └── update-memory-bank-comprehensive.md
 │   ├── docs/                   # Documentation
 │   │   └── memory-bank/
 │   │       ├── index.md
-│   │       └── initial-setup.md
+│   │       ├── initial-setup.md
+│   │       └── examples/       # Memory bank examples
+│   │           ├── github-operations.md
+│   │           ├── language.md
+│   │           ├── notation.md
+│   │           └── shell-command.md
 │   ├── memory/                 # Memory bank files (project knowledge)
 │   │   ├── index.md
-│   │   └── *.md
+│   │   ├── project-overview.md
+│   │   ├── codebase-structure.md
+│   │   ├── coding-guidelines.md
+│   │   ├── suggested-commands.md
+│   │   ├── ubiquitous-language.md
+│   │   └── github-operations.md
 │   ├── scripts/                # Helper scripts
+│   │   └── ask-edit-answer.sh
 │   ├── swap/                   # Git-ignored working files
 │   │   ├── dev-logs/
 │   │   │   ├── index.md
 │   │   │   └── items/
 │   │   │       └── {{dev-log-name}}/
 │   │   └── answer.md
-│   ├── templates/              # Templates for various structures
-│   │   ├── dev-logs/
-│   │   │   ├── index.md
-│   │   │   └── item/
-│   │   │       └── *.md
-│   │   └── memory/
-│   │       └── index.md
-│   └── yeah*.md                # Various yeah.md versions
+│   └── templates/              # Templates for various structures
+│       ├── dev-logs/
+│       │   ├── index.md
+│       │   └── item/
+│       │       └── *.md
+│       └── memory/
+│           └── index.md
 ├── .github/                    # GitHub configuration
-│   └── prompts/                # Custom GitHub Copilot prompts
-│       ├── dev-log.prompt.md
-│       └── yeah.prompt.md
+│   ├── prompts/                # Custom GitHub Copilot prompts
+│   │   ├── yeah.prompt.md
+│   │   ├── commit-push-pr.prompt.md
+│   │   ├── review-pr.prompt.md
+│   │   └── create-dev-branch.prompt.md
+│   └── instructions/           # GitHub instructions (if any)
 ├── .vscode/                    # VS Code configuration
+│   └── settings.json
+├── docs/                       # Development documentation
+│   └── dev/
+│       └── agdocs-scaffolding.md  # Scaffolding script documentation
 ├── scripts/                    # Development scripts
-│   ├── ask-edit-answer.sh
-│   └── query.sh
+│   └── agdocs-scaffolding.sh  # AGDocs installation script
+├── README.md                   # Project overview and features
+├── CONTRIBUTING.md             # Development guidelines
 └── .git/                       # Git repository data
 ```
 
@@ -96,7 +120,27 @@ Permanent knowledge repository. Files here document project structure, rules, an
 Custom prompts that configure GitHub Copilot behavior for specific workflows.
 
 ### `scripts/`
-Helper scripts for interactive workflows (e.g., user input collection).
+Helper scripts for interactive workflows (e.g., user input collection) and development automation.
+
+### Root Documentation Files
+
+- **`README.md`**: Project overview, features, and quick start guide. Explains:
+  - AGDocs framework and AI-assisted workflows
+  - `/yeah` command and its importance
+  - `.agdocs` directory structure
+  - AGDocs scaffolding script usage
+  - Memory bank system overview
+
+- **`CONTRIBUTING.md`**: Development guidelines for contributors. Includes:
+  - Setup instructions and prerequisites
+  - Development workflow and best practices
+  - Code style conventions and commit message format
+  - PR guidelines and review process
+  - Common tasks and troubleshooting
+
+### `docs/dev/`
+Development documentation directory containing:
+- `agdocs-scaffolding.md`: Comprehensive guide for the AGDocs scaffolding script
 
 ## Configuration Files
 

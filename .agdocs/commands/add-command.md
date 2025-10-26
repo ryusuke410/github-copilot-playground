@@ -21,8 +21,9 @@ Understand what the new command should do:
 - Command name (will be kebab-case, e.g., `new-command.md`)
 - Purpose and overview of the command
 - Detailed instructions and workflow steps
-- Whether a prompt entry point is needed in `.github/prompts/`
 - Any related commands or templates
+
+**Note**: Unless explicitly stated otherwise, always create a corresponding prompt entry point in `.github/prompts/{{command_name}}.prompt.md`.
 
 ### 3. Review Existing Commands
 
@@ -72,9 +73,9 @@ When a human requests [describe the trigger], follow these steps:
 - `related-command-2` - [Brief description]
 ```
 
-### 5. Create Prompt Entry Point (Optional)
+### 5. Create Prompt Entry Point
 
-If requested, create `.github/prompts/{{command_name}}.prompt.md`:
+Unless explicitly instructed not to, create `.github/prompts/{{command_name}}.prompt.md`:
 
 ```markdown
 Read {{repo_root}}/.agdocs/commands/{{command_name}}.md
@@ -108,7 +109,7 @@ Consider updating related documentation:
 
 Inform the human about:
 - The command file created and its location
-- The prompt entry point created (if applicable)
+- The prompt entry point created (unless explicitly skipped)
 - How to use the new command
 - Any related documentation updated
 
@@ -148,7 +149,7 @@ AI-agent:
 - Always read documentation first to understand the system
 - Maintain consistency with existing command file structure
 - If the command introduces new concepts, consider updating memory banks
-- Prompt entry points are optional but useful for frequently used commands
+- **Always create prompt entry points unless explicitly instructed not to**
 
 ## Related Commands
 

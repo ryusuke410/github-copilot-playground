@@ -32,7 +32,7 @@ Never end the conversation.
 ./.agdocs/scripts/ask-edit-answer.sh
 ```
 
-If you cannot execute the script, use the alternative command below:
+If `./.agdocs/scripts/ask-edit-answer.sh` fails, use the alternative command below:
 
 ```sh
 (printf '{{your_question}}\n' && IFS= read -r answer && [ -n "$answer" ] && printf '%s\n' "$answer" || printf 'No input provided\n')

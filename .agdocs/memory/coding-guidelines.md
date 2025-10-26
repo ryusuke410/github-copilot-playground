@@ -110,6 +110,13 @@ Examples:
 - Use `chmod u+x` instead of `chmod +x` when making files executable
 - Subshells ensure that directory changes and environment modifications don't affect the parent shell
 
+### Terminal Command Auto-Approval
+- The `.vscode/settings.json` file configures which terminal commands can be auto-approved by the AI agent
+- Safe read-only commands (e.g., `git status`, `ls`, `cat`) are whitelisted
+- Potentially destructive commands (e.g., `rm`, `chmod`, `curl`) are blocked
+- Project-specific scripts can be whitelisted using exact patterns or regex
+- When adding new scripts, consider adding them to the auto-approval list
+
 ## Language Requirements
 
 ### English-Only Content

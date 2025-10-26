@@ -19,6 +19,8 @@ The project consists of documentation and tooling infrastructure:
   - Templates for structured work
 
 - **`.github/prompts/`** - Custom prompts for GitHub Copilot
+  - `awake.prompt.md` - Standalone prompt for continuous ai-agent operation
+  - Other prompts that reference command files
 - **`scripts/`** - Shell scripts for development workflows
   - `agdocs-scaffolding.sh` - Installs `.agdocs` structure into new projects
 
@@ -44,6 +46,7 @@ The project consists of documentation and tooling infrastructure:
   - ✅ Custom prompt development
   - ✅ AGDocs scaffolding script
   - ✅ README and CONTRIBUTING documentation
+  - ✅ Awake prompt for continuous operation
 
 ## Project Type
 

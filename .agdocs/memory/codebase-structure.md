@@ -49,13 +49,15 @@ github-copilot-playground/
 │           └── index.md
 ├── .github/                    # GitHub configuration
 │   ├── prompts/                # Custom GitHub Copilot prompts
+│   │   ├── awake.prompt.md
 │   │   ├── yeah.prompt.md
 │   │   ├── commit-push-pr.prompt.md
-│   │   ├── review-pr.prompt.md
-│   │   └── create-dev-branch.prompt.md
+│   │   ├── create-dev-branch.prompt.md
+│   │   ├── dev-log.prompt.md
+│   │   └── review-pr.prompt.md
 │   └── instructions/           # GitHub instructions (if any)
 ├── .vscode/                    # VS Code configuration
-│   └── settings.json
+│   └── settings.json           # Terminal command auto-approval rules
 ├── docs/                       # Development documentation
 │   └── dev/
 │       └── agdocs-scaffolding.md  # Scaffolding script documentation
@@ -82,6 +84,9 @@ Read {{repo_root}}/.agdocs/commands/command-name.md
 **Key distinction:**
 - **Prompt files** (`.github/prompts/*.prompt.md`): Entry points that reference command files
 - **Command files** (`.agdocs/commands/*.md`): Actual content with detailed instructions
+
+**Special case - awake.prompt.md:**
+This is a standalone prompt file that does NOT reference a command file. It contains complete instructions for keeping the ai-agent active during extended work sessions. It provides task management rules, context reloading triggers, and query commands for continuous human interaction.
 
 ### Memory Bank (`memory/`)
 Stores project knowledge in markdown files
@@ -144,6 +149,8 @@ Development documentation directory containing:
 
 ## Configuration Files
 
-Currently minimal:
-- `.gitignore` - Excludes `.agdocs/swap/` directory
-- VS Code workspace settings (if any)
+- **`.gitignore`** - Excludes `.agdocs/swap/` directory
+- **`.vscode/settings.json`** - VS Code workspace settings, including:
+  - `chat.tools.terminal.autoApprove` - Auto-approval rules for terminal commands executed by AI agent
+  - Rules for git commands, file operations, and project-specific scripts
+  - Whitelist patterns for safe commands, blacklist patterns for dangerous operations

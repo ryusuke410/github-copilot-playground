@@ -80,9 +80,15 @@ The `.agdocs` directory is the heart of this AI-assisted development system:
 .agdocs/
 ├── commands/              # AI agent workflow definitions
 │   ├── yeah.md           # Core AI agent rules
+│   ├── add-command.md    # Create new command files
 │   ├── commit-push-pr.md # Git workflow automation
+│   ├── create-dev-branch.md  # Branch creation workflow
+│   ├── dev-log.md        # Task management with dev-logs
+│   ├── initialize-memory-bank.md  # Memory bank initialization
 │   ├── review-pr.md      # PR review workflow
-│   └── create-dev-branch.md  # Branch creation workflow
+│   ├── update-docs.md    # Documentation update workflow
+│   ├── update-memory-bank-comprehensive.md  # Comprehensive updates
+│   └── update-memory-bank-targeted.md  # Targeted updates
 ├── docs/                  # Documentation
 │   └── memory-bank/      # Memory bank system docs
 │       ├── index.md
@@ -142,25 +148,27 @@ The `.agdocs` directory is the heart of this AI-assisted development system:
 The `.agdocs/commands/` directory contains pre-defined workflows:
 
 - **`yeah.md`**: Core AI agent behavior and rules
-- **`commit-push-pr.md`**: Automated git commit, push, and PR creation
-- **`review-pr.md`**: Systematic PR review workflow
-- **`create-dev-branch.md`**: Development branch creation from main
 - **`add-command.md`**: Create new command files
+- **`commit-push-pr.md`**: Automated git commit, push, and PR creation
+- **`create-dev-branch.md`**: Development branch creation from main
 - **`dev-log.md`**: Task management with dev-logs
 - **`initialize-memory-bank.md`**: Memory bank initialization
-- **`update-memory-bank-targeted.md`**: Targeted memory bank updates
+- **`review-pr.md`**: Systematic PR review workflow
+- **`update-docs.md`**: Update repository documentation to reflect current reality
 - **`update-memory-bank-comprehensive.md`**: Comprehensive memory bank updates
+- **`update-memory-bank-targeted.md`**: Targeted memory bank updates
 
 ## GitHub Copilot Prompts
 
 The `.github/prompts/` directory contains custom prompts for GitHub Copilot:
 
 - **`awake.prompt.md`**: Standalone prompt for continuous AI agent operation
-- **`yeah.prompt.md`**: Entry point for the yeah command workflow
 - **`commit-push-pr.prompt.md`**: Entry point for commit, push, and PR workflow
 - **`create-dev-branch.prompt.md`**: Entry point for branch creation workflow
 - **`dev-log.prompt.md`**: Entry point for dev-log task management
 - **`review-pr.prompt.md`**: Entry point for PR review workflow
+- **`update-docs.prompt.md`**: Entry point for documentation update workflow
+- **`yeah.prompt.md`**: Entry point for the yeah command workflow
 
 Most prompts reference their corresponding command files in `.agdocs/commands/`, except `awake.prompt.md` which is self-contained.
 

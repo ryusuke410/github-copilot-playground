@@ -44,6 +44,34 @@ The `/yeah` command is a critical component for continuous AI agent operation. I
 
 The `/yeah` command loads `.agdocs/commands/yeah.md`, which contains the core rules for AI agent behavior.
 
+### 🌟 `awake` Prompt
+
+The `awake` prompt is a standalone version of the `/yeah` command, designed for continuous AI agent operation without requiring the full command file setup.
+
+**Key Features:**
+- **Continuous Operation**: Keeps the AI agent active and working without ending the conversation
+- **Task Management**: Uses the todo tool to track progress across multi-step work
+- **Context Preservation**: Automatically reloads critical instructions when the context window is compressed
+- **Interactive Queries**: Prompts the user for input when clarification is needed or tasks are complete
+
+**Usage:**
+1. Open GitHub Copilot Chat
+2. Attach `awake.prompt.md` to your chat
+3. Provide your task instructions
+
+**When to Use:**
+- Long-running tasks that require multiple steps
+- Situations where you want the AI agent to manage its own workflow
+- When you need continuous interaction without manual intervention
+
+The `awake` prompt is particularly useful for:
+- Complex refactoring tasks
+- Multi-file updates
+- Documentation generation
+- Systematic code reviews
+
+Unlike `/yeah`, which references a command file, `awake` contains complete instructions within the prompt file itself, making it self-contained and easy to use in any context.
+
 ## The `.agdocs` Directory
 
 The `.agdocs` directory is the heart of this AI-assisted development system:
@@ -122,6 +150,19 @@ The `.agdocs/commands/` directory contains pre-defined workflows:
 - **`initialize-memory-bank.md`**: Memory bank initialization
 - **`update-memory-bank-targeted.md`**: Targeted memory bank updates
 - **`update-memory-bank-comprehensive.md`**: Comprehensive memory bank updates
+
+## GitHub Copilot Prompts
+
+The `.github/prompts/` directory contains custom prompts for GitHub Copilot:
+
+- **`awake.prompt.md`**: Standalone prompt for continuous AI agent operation
+- **`yeah.prompt.md`**: Entry point for the yeah command workflow
+- **`commit-push-pr.prompt.md`**: Entry point for commit, push, and PR workflow
+- **`create-dev-branch.prompt.md`**: Entry point for branch creation workflow
+- **`dev-log.prompt.md`**: Entry point for dev-log task management
+- **`review-pr.prompt.md`**: Entry point for PR review workflow
+
+Most prompts reference their corresponding command files in `.agdocs/commands/`, except `awake.prompt.md` which is self-contained.
 
 ## Memory Bank System
 

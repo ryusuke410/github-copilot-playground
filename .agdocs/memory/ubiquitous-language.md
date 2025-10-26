@@ -13,6 +13,7 @@ This document defines the domain-specific terminology used throughout the projec
 | Swap Directory | スワップディレクトリ | Git-ignored directory (`.agdocs/swap/`) for temporary working files and dev-logs | "Dev-logs are stored in the swap directory" |
 | Command File | コマンドファイル | Markdown file in `.agdocs/commands/` that defines ai-agent behavior with detailed instructions | "Read the command file to understand the workflow" |
 | Prompt Entry Point | プロンプトエントリーポイント | Markdown file in `.github/prompts/` (`.prompt.md`) that serves as entry point, typically referencing a command file | "The prompt entry point reads the command file with detailed instructions" |
+| Standalone Prompt | スタンドアロンプロンプト | A prompt file (e.g., awake.prompt.md) containing complete instructions without referencing a command file | "The awake prompt is a standalone prompt for continuous operation" |
 | Template | テンプレート | Reusable file structure in `.agdocs/templates/` | "Use the template to create a new dev-log" |
 | Human Instructions | 人間の指示 | User-provided requirements and context, may be in Japanese | "Check human-instructions.md for the original request" |
 | Ubiquitous Language | ユビキタス言語 | Domain-specific terminology with both English and Japanese translations | "Add new terms to the ubiquitous language memory bank" |
@@ -23,6 +24,8 @@ This document defines the domain-specific terminology used throughout the projec
 | English Term | Japanese Term (日本語) | Definition | Usage Example |
 |--------------|----------------------|------------|---------------|
 | Query Command | クエリコマンド | Interactive script that prompts user for input | "Execute the query command to ask the user a question" |
+| Context Window | コンテキストウィンドウ | AI agent's working memory that may be compressed during long sessions | "Reload critical files when context window is compressed" |
+| Todo Tool | Todoツール | Task management tool used by ai-agent to track progress | "Use the todo tool to organize multi-step work" |
 | Status File | ステータスファイル | File tracking dev-log procedure completion (`status.md`) | "Update the status file after completing each step" |
 | Index File | インデックスファイル | Table listing all items in a collection | "The index file contains all memory banks" |
 | Quick Start | クイックスタート | Guide for beginning work on a dev-log | "Read quick-start.md to understand how to proceed" |

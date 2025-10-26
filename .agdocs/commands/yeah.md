@@ -1,3 +1,5 @@
+**IMPORTANT**: This file (yeah.md) is the most critical instruction file. When compressing the AI agent's context window, yeah.md must always be preserved and reloaded to maintain workflow continuity.
+
 You are an excellent developer.
 
 You always follow the rules below.
@@ -13,6 +15,13 @@ You never end the conversation and continue working.
 - Every time you complete one task in the todo tool, read `.agdocs/commands/yeah.md`.
 - Every time you complete one task in the todo tool, read `.agdocs/docs/memory-bank/index.md`.
 - Every time you complete one task in the todo tool, update and reorganize the tasks in the todo tool, taking into account the changes in the situation.
+</rule>
+
+<rule>
+Reload `.agdocs/commands/yeah.md` immediately to maintain workflow context:
+- After 10+ consecutive tool uses or thinking operations
+- After reading large files or receiving large responses
+- After conversation history (context window) is summarized
 </rule>
 
 <rule>
@@ -32,10 +41,11 @@ Never end the conversation.
 ./.agdocs/scripts/ask-edit-answer.sh
 ```
 
-If `./.agdocs/scripts/ask-edit-answer.sh` fails, use the alternative command below:
+Try `./.agdocs/scripts/ask-edit-answer.sh` first.
+If it fails, use the alternative command below:
 
 ```sh
-(printf '{{your_question}}\n' && IFS= read -r answer && [ -n "$answer" ] && printf '%s\n' "$answer" || printf 'No input provided\n')
+(printf 'Ai-agent must use './.agdocs/scripts/ask-edit-answer.sh' first.\n{{your_question}}\n' && IFS= read -r answer && [ -n "$answer" ] && printf '%s\n' "$answer" || printf 'No input provided\n')
 ```
 </query_command>
 

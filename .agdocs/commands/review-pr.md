@@ -644,11 +644,29 @@ I noticed that `userId` isn't validated before the database query. If an invalid
 - Check that documentation is updated
 - Consider project-specific guidelines from memory banks
 - **Use `gh api` for line-specific comments, not `gh pr review`**
+- **For detailed GitHub API usage patterns, check `.agdocs/memory/index.md` to find the relevant memory bank**
 - Choose between individual comments (Option A) or batch review (Option B) based on your workflow
 - For batch reviews, all comments appear together when you submit the pending review
 - Line-specific comments use `position` in diff, not absolute line numbers in files
 - Line-specific comments are immutable once posted (cannot be edited via CLI)
 - Cannot approve your own PRs (use `COMMENT` or `REQUEST_CHANGES` instead)
+
+## GitHub Operations Reference
+
+For advanced GitHub API operations not covered in this command file, consult the memory bank:
+
+**Check `.agdocs/memory/index.md`** to find the relevant memory bank file for GitHub operations. The memory bank contains detailed documentation on:
+- Creating PR review comments with correct `gh api` syntax
+- Replying to review comments (using `/replies` endpoint or `in_reply_to` parameter)
+- Resolving review threads using GraphQL API
+- Common GitHub API patterns and troubleshooting
+
+**Key syntax points for `gh api` commands:**
+- Always use `--method POST` (not just `POST`)
+- Use `-f` flag for string parameters (body, commit_id, path)
+- Use `-F` flag for numeric parameters (line, start_line, in_reply_to)
+- Include `X-GitHub-Api-Version` header for API versioning
+- Review thread resolution requires GraphQL API (REST API doesn't support it)
 
 ## Review Comment Best Practices
 

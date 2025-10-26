@@ -45,11 +45,11 @@ Wait for human response before proceeding.
 Update local references to match the remote repository:
 
 ```bash
-git fetch origin --prune --all
+git fetch origin --prune
 ```
 
 This command:
-- Fetches all branches from `origin`
+- Fetches all branches from `origin` remote
 - Prunes deleted remote branches from local references
 - Updates all remote-tracking branches
 
@@ -132,7 +132,7 @@ On branch main
 nothing to commit, working tree clean
 
 # Fetch latest
-$ git fetch origin --prune --all
+$ git fetch origin --prune
 
 # Create branch
 $ git checkout -b 'add-user-profile' origin/main
@@ -165,7 +165,7 @@ Would you like to:
 $ git stash push -m "WIP: temp stash before branch creation"
 
 # Proceed with branch creation
-$ git fetch origin --prune --all
+$ git fetch origin --prune
 $ git checkout -b 'implement-search' origin/main
 ```
 
@@ -176,7 +176,7 @@ AI: What feature or task will you be working on in this branch?
 Human: I want to refactor the database connection logic
 AI: [Generates branch name: refactor-database-connection]
 
-$ git fetch origin --prune --all
+$ git fetch origin --prune
 $ git checkout -b 'refactor-database-connection' origin/main
 Switched to a new branch 'refactor-database-connection'
 ```

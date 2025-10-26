@@ -94,7 +94,7 @@
     "Set-ItemProperty": false,
     "sp": false,
     "Set-Acl": false,
-    "jq": false,
+    "jq": true,
     "xargs": false,
     "eval": false,
     "Invoke-Expression": false,

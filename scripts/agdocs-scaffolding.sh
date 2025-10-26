@@ -73,13 +73,6 @@ if [ -d "$SOURCE_AGDOCS/docs" ]; then
     cp -r "$SOURCE_AGDOCS/docs" "$TARGET_DIR/.agdocs/"
 fi
 
-# 2a. Copy examples directory
-if [ -d "$SOURCE_AGDOCS/docs/memory-bank/examples" ]; then
-    info "Copying memory-bank examples..."
-    mkdir -p "$TARGET_DIR/.agdocs/docs/memory-bank/examples"
-    cp -r "$SOURCE_AGDOCS/docs/memory-bank/examples"/* "$TARGET_DIR/.agdocs/docs/memory-bank/examples/"
-fi
-
 # 3. Copy templates directory
 if [ -d "$SOURCE_AGDOCS/templates" ]; then
     info "Copying templates..."

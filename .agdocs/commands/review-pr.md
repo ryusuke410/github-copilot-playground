@@ -58,12 +58,12 @@ Display key information to the human:
 Fetch the latest remote information to ensure you have current data:
 
 ```bash
-git fetch origin --prune --all
+git fetch origin --prune
 ```
 
 This command:
-- Fetches all branches from remote
-- Prunes deleted remote branches
+- Fetches all branches from `origin` remote
+- Prunes deleted remote branches from local references
 - Updates remote tracking references
 
 ### 5. Checkout PR Branch
@@ -398,7 +398,7 @@ gh pr list
 gh pr view 1 --json number,title,headRefName,files
 
 # Update remote
-git fetch origin --prune --all
+git fetch origin --prune
 
 # Checkout PR
 gh pr checkout 1
@@ -420,7 +420,7 @@ gh pr list
 # Select PR #2
 
 gh pr view 2
-git fetch origin --prune --all
+git fetch origin --prune
 gh pr checkout 2
 
 # Get repo info and commit SHA
@@ -460,7 +460,7 @@ gh pr list
 # Select PR #2
 
 gh pr view 2
-git fetch origin --prune --all
+git fetch origin --prune
 gh pr checkout 2
 
 # Get repo info and commit SHA
@@ -649,6 +649,38 @@ I noticed that `userId` isn't validated before the database query. If an invalid
 - Line-specific comments use `position` in diff, not absolute line numbers in files
 - Line-specific comments are immutable once posted (cannot be edited via CLI)
 - Cannot approve your own PRs (use `COMMENT` or `REQUEST_CHANGES` instead)
+
+## Review Comment Best Practices
+
+### Batching Comments
+
+- **Group related comments together** when possible to reduce notification noise
+- If multiple issues in the same file relate to the same concept, consider one comment referencing all locations
+- Use batch review (Option B) when you have many comments to ensure they appear together
+
+### Overall Review Summary
+
+- **Keep the overall review summary concise** (2-3 sentences)
+- Focus on high-level observations and next steps
+- Avoid repeating details already in line-specific comments
+- Don't include praise or evaluation phrases (e.g., "Great job!", "LGTM")
+
+### Comment Tone
+
+- **Avoid evaluative language** - focus on facts and questions
+- Bad: "This is poorly written" 
+- Good: "Consider extracting this logic into a separate function for clarity"
+- Bad: "Nice work on this implementation"
+- Good: (No comment if code is fine - only comment on issues)
+
+### When to Comment
+
+- **Don't comment just to acknowledge** - silence means approval
+- Only add comments for:
+  - Issues that need fixing
+  - Questions that need answers
+  - Suggestions for improvement
+  - Security or performance concerns
 
 ## Troubleshooting
 

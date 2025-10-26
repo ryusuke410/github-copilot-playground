@@ -4,7 +4,51 @@
 
 The `agdocs-scaffolding.sh` script sets up the `.agdocs` directory structure in a target directory, enabling AI-assisted development workflows in new projects. This script copies essential files and directories from a source repository while excluding project-specific local files.
 
-## Usage
+## Quick Start
+
+### Basic Usage
+
+```bash
+# Run from repository root
+./scripts/agdocs-scaffolding.sh <target_directory>
+```
+
+### Example
+
+```bash
+# Scaffold into a new project
+./scripts/agdocs-scaffolding.sh ../my-new-project
+
+# Scaffold into a subdirectory
+./scripts/agdocs-scaffolding.sh ./my-project
+```
+
+### What Gets Copied
+
+The script copies the following structure:
+- ✅ **Commands**: AI agent workflow definitions (`.agdocs/commands/*.md`)
+- ✅ **Docs**: Memory bank documentation (`.agdocs/docs/`)
+- ✅ **Templates**: Reusable templates (`.agdocs/templates/`)
+- ✅ **Scripts**: Helper scripts (`.agdocs/scripts/`)
+- ✅ **Prompts**: GitHub Copilot prompts (`.github/prompts/*.prompt.md`)
+- ✅ **Instructions**: GitHub instructions (`.github/instructions/*.instructions.md`)
+
+### What Doesn't Get Copied
+
+- ❌ Local files (`*.local.md`, `*.local.prompt.md`, `*.local.instructions.md`)
+- ❌ Project-specific memory banks (only `index.md` template is copied)
+- ❌ Dev-logs and swap content (only `.gitignore` is copied)
+
+### After Scaffolding
+
+1. Initialize memory banks with your project content
+2. Create project-specific command files if needed
+3. Configure prompts for your project
+4. Customize copied files as needed
+
+---
+
+## Detailed Specifications
 
 ### Command Syntax
 
@@ -12,66 +56,51 @@ The `agdocs-scaffolding.sh` script sets up the `.agdocs` directory structure in 
 ./scripts/agdocs-scaffolding.sh <target_directory>
 ```
 
-### Parameters
+**Parameters:**
+- `<target_directory>`: Absolute or relative path where `.agdocs` structure will be created
 
-- `<target_directory>`: The absolute or relative path to the directory where `.agdocs` structure should be created
+### Prerequisites and Validation
 
-### Example
-
-```bash
-# Scaffold into a new project directory
-./scripts/agdocs-scaffolding.sh ../my-new-project
-
-# Scaffold into current directory's subdirectory
-./scripts/agdocs-scaffolding.sh ./my-project
-```
-
-## Script Behavior
-
-### Prerequisites
-
-- Script must be executed from the repository root (`{{repo_root}}`)
+**Requirements:**
+- Script must be executed from repository root (`{{repo_root}}`)
 - Target directory must be writable
 - Source `.agdocs` directory must exist and be complete
 
+**Validation checks:**
+- Checks if target directory's `.agdocs` already exists
+  - If exists: Exits with error
+  - If not exists: Proceeds with scaffolding
+
 ### Execution Steps
 
-The script performs the following operations:
+The script performs these operations in sequence:
 
-1. **Validation**: Checks if target directory's `.agdocs` already exists
-   - If exists: Exits with error message
-   - If not exists: Proceeds with scaffolding
-
-2. **Copy Commands**: Copies all `.md` files from `.agdocs/commands/`
+1. **Copy Commands**: Copies all `.md` files from `.agdocs/commands/`
    - **Excludes**: Files ending with `.local.md`
    - Creates target directory if needed
 
-3. **Copy Docs**: Recursively copies `.agdocs/docs/` directory
+2. **Copy Docs**: Recursively copies `.agdocs/docs/` directory
    - Copies all subdirectories and files
 
-4. **Copy Examples**: Copies `.agdocs/docs/memory-bank/examples/` directory
-   - Includes shell-command.md, language.md, notation.md examples
-   - Provides templates for creating memory banks
-
-5. **Copy Templates**: Recursively copies `.agdocs/templates/` directory  
+3. **Copy Templates**: Recursively copies `.agdocs/templates/` directory  
    - Preserves directory structure
 
-6. **Initialize Memory**: Creates `.agdocs/memory/` directory
+4. **Initialize Memory**: Creates `.agdocs/memory/` directory
    - Copies only `index.md` from `.agdocs/templates/memory/index.md`
    - Does not copy other memory bank files (project-specific)
 
-7. **Copy Scripts**: Recursively copies `.agdocs/scripts/` directory
+5. **Copy Scripts**: Recursively copies `.agdocs/scripts/` directory
    - Preserves execute permissions
 
-8. **Initialize Swap**: Creates `.agdocs/swap/` directory
+6. **Initialize Swap**: Creates `.agdocs/swap/` directory
    - Copies only `.gitignore` file
    - Does not copy dev-logs or other swap content
 
-9. **Copy Prompts** (if exists): Copies `.prompt.md` files from `.github/prompts/`
+7. **Copy Prompts** (if exists): Copies `.prompt.md` files from `.github/prompts/`
    - **Excludes**: Files ending with `.local.prompt.md`
    - Skips if prompts directory doesn't exist
 
-10. **Copy Instructions** (if exists): Copies `.instructions.md` files from `.github/instructions/`
+8. **Copy Instructions** (if exists): Copies `.instructions.md` files from `.github/instructions/`
    - **Excludes**: Files ending with `.local.instructions.md`  
    - Skips if instructions directory doesn't exist
 

@@ -99,6 +99,7 @@
     "eval": false,
     "Invoke-Expression": false,
     "iex": false,
-    "/^\\.\\/\\.agdocs\\/scripts\\/ask-edit-answer.sh$/": true
+    "/^\\.\\/\\.agdocs\\/scripts\\/ask-edit-answer.sh$/": true,
+    "gh pr view": true
   }
 }

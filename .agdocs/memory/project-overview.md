@@ -20,6 +20,12 @@ The project consists of documentation and tooling infrastructure:
 
 - **`.github/prompts/`** - Custom prompts for GitHub Copilot
 - **`scripts/`** - Shell scripts for development workflows
+  - `agdocs-scaffolding.sh` - Installs `.agdocs` structure into new projects
+
+- **Root Documentation**:
+  - `README.md` - Project overview, features, and quick start guide
+  - `CONTRIBUTING.md` - Development guidelines and contribution process
+  - `docs/dev/` - Development documentation (scaffolding script usage, etc.)
 
 ## Technology Stack
 
@@ -31,11 +37,13 @@ The project consists of documentation and tooling infrastructure:
 ## Project Timeline
 
 - **Start Date**: 2025
-- **Current Phase**: Initial setup and experimentation
+- **Current Phase**: Active development and documentation
 - **Key Milestones**:
-  - Memory Bank system implementation
-  - Dev-Log system implementation
-  - Custom prompt development
+  - ✅ Memory Bank system implementation
+  - ✅ Dev-Log system implementation
+  - ✅ Custom prompt development
+  - ✅ AGDocs scaffolding script
+  - ✅ README and CONTRIBUTING documentation
 
 ## Project Type
 

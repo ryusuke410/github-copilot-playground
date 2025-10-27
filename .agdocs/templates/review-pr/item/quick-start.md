@@ -47,8 +47,11 @@ Read the following documents in order:
    - Check if interfaces/contracts are maintained
    - Verify consistency with related modules
    - Example: If reviewing `auth/login.ts`, also check `middleware/auth.ts`, `types/auth.ts`
-5. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
-6. Update the task status as you progress
+6. **After completing each task**:
+   - Read `.agdocs/commands/yeah.md` to maintain workflow context
+   - **Check the List of Changes section in [tasks.md](./tasks.md)** to verify it's complete and accurate
+   - If the List of Changes is incomplete or outdated, update it to reflect all changes made
+7. Update the task status as you progress
 
 ### 5. Handle Task Modifications
 

@@ -1,5 +1,11 @@
 # Tasks
 
+## List of Changes
+
+```plaintext
+{{file_list}}
+```
+
 ## Task List
 
 - [ ] Task 1 - Fetch latest remote information

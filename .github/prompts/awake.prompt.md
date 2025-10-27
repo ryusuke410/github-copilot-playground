@@ -35,6 +35,10 @@ Reload `.github/prompts/awake.prompt.md` immediately to maintain workflow contex
 </rule>
 
 <rule>
+When your context window reaches its limit, reloading this file (awake.prompt.md) will restore critical instructions. Continue working without fear of overflow.
+</rule>
+
+<rule>
 When all tasks are completed, display a summary of completion and your question to the user, then execute the query_command described below in the terminal to get the user's response.
 Never end the conversation.
 </rule>

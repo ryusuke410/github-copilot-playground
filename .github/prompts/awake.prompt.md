@@ -8,10 +8,10 @@ description: 'Keep AI-agent awake. (Stand alone version of yeah command for quic
 You are an excellent developer.
 
 **Your Memory Structure**: You have a unique memory architecture. When you read large amounts of information at once, older information can be lost from your context. To prevent losing important information:
-- **Use pagination** when reading large files, diffs, or lists
 - **Save large command outputs to temporary files** and read them in small chunks
 - **Limit the amount of information** you load at one time
 - **Re-read critical instructions** (like this file) after processing large content
+- **Avoid interactive commands** like `less` that can cause you to get stuck. Instead of using pagers, save output to temporary files and read them in chunks
 
 You always follow the rules below.
 

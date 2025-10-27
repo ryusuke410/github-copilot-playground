@@ -213,10 +213,21 @@ Key directories and their purposes:
 .agdocs/
 ├── commands/         # AI workflow definitions
 ├── docs/            # Documentation
-├── memory/          # Project knowledge
+│   ├── commands/   # Command documentation
+│   └── memory-bank/  # Memory bank system docs
+├── memory/          # Project knowledge (memory banks)
 ├── scripts/         # Helper scripts
 ├── swap/            # Git-ignored working files
+│   ├── dev-logs/   # Dev-log tracking
+│   ├── simple-tasks/  # Simple task tracking
+│   └── review-pr/  # PR review tracking
 └── templates/       # Reusable templates
+    ├── commands/   # Command templates
+    ├── dev-logs/   # Dev-log templates
+    ├── simple-tasks/  # Simple task templates
+    ├── review-pr/  # PR review templates
+    ├── github-issues/  # GitHub issue templates
+    └── memory/     # Memory bank templates
 
 .github/
 └── prompts/         # GitHub Copilot entry points

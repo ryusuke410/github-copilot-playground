@@ -12,6 +12,8 @@ github-copilot-playground/
 │   │   ├── create-dev-branch.md
 │   │   ├── add-command.md
 │   │   ├── dev-log.md
+│   │   ├── simple-task.md
+│   │   ├── update-docs.md
 │   │   ├── initialize-memory-bank.md
 │   │   ├── update-memory-bank-targeted.md
 │   │   └── update-memory-bank-comprehensive.md
@@ -39,9 +41,17 @@ github-copilot-playground/
 │   │   │   ├── index.md
 │   │   │   └── items/
 │   │   │       └── {{dev-log-name}}/
+│   │   ├── simple-tasks/
+│   │   │   ├── index.md
+│   │   │   └── items/
+│   │   │       └── {{simple-task-name}}/
 │   │   └── answer.md
 │   └── templates/              # Templates for various structures
 │       ├── dev-logs/
+│       │   ├── index.md
+│       │   └── item/
+│       │       └── *.md
+│       ├── simple-tasks/
 │       │   ├── index.md
 │       │   └── item/
 │       │       └── *.md
@@ -54,7 +64,9 @@ github-copilot-playground/
 │   │   ├── commit-push-pr.prompt.md
 │   │   ├── create-dev-branch.prompt.md
 │   │   ├── dev-log.prompt.md
-│   │   └── review-pr.prompt.md
+│   │   ├── review-pr.prompt.md
+│   │   ├── simple-task.prompt.md
+│   │   └── update-docs.prompt.md
 │   └── instructions/           # GitHub instructions (if any)
 ├── .vscode/                    # VS Code configuration
 │   └── settings.json           # Terminal command auto-approval rules

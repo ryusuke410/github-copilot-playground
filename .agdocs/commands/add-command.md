@@ -43,6 +43,14 @@ Create a new file in `.agdocs/commands/{{command_name}}.md` with the following s
 
 [Brief description of what this command does and when to use it]
 
+## Prerequisites
+
+Review the following memory banks for necessary knowledge:
+- `.agdocs/memory/index.md` - Full list of available memory banks
+- [List other relevant memory banks specific to this command]
+
+**Important**: Always consult memory banks for current best practices, command syntax, and implementation patterns before executing operations.
+
 ## Instructions
 
 When a human requests [describe the trigger], follow these steps:
@@ -66,6 +74,7 @@ When a human requests [describe the trigger], follow these steps:
 - [Important considerations]
 - [Edge cases or limitations]
 - [Best practices specific to this command]
+- **Reference memory banks** for command syntax and implementation details
 
 ## Related Commands
 
@@ -75,18 +84,26 @@ When a human requests [describe the trigger], follow these steps:
 
 ### 5. Create Prompt Entry Point
 
-Unless explicitly instructed not to, create `.github/prompts/{{command_name}}.prompt.md`:
+Unless explicitly instructed not to, create `.github/prompts/{{command_name}}.prompt.md`.
 
+**Select appropriate template:**
+1. Read `.agdocs/templates/commands/index.md` to see available prompt templates
+2. Choose the template that best matches the command's purpose
+3. Use the selected template as a starting point
+
+**Basic template (most common):**
 ```markdown
 Read {{repo_root}}/.agdocs/commands/{{command_name}}.md
 ```
 
-Or with additional context if needed:
-
+**With additional context:**
 ```markdown
 1. Read {{repo_root}}/.agdocs/commands/{{command_name}}.md
 2. Follow human instructions.
 ```
+
+**For complex commands:**
+Reference the selected template from `.agdocs/templates/commands/items/` and customize as needed.
 
 ### 6. Verify Structure
 
@@ -101,9 +118,15 @@ Ensure the new files follow conventions:
 ### 7. Update Documentation
 
 Consider updating related documentation:
+- **Add entry to `.agdocs/docs/commands/index.md`** with command name and brief description
 - Add entry to `.agdocs/memory/suggested-commands.md` if it's a commonly used command
 - Update `.agdocs/memory/codebase-structure.md` if it introduces new patterns
 - Cross-reference from related command files
+
+**Format for commands/index.md**:
+```markdown
+| command-name | Brief Description |
+```
 
 ### 8. Report Completion
 

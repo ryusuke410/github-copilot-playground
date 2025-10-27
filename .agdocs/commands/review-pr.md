@@ -2,13 +2,71 @@
 
 ## Overview
 
-This command provides a systematic workflow for reviewing pull requests. It guides you through fetching PR information, checking out the branch, analyzing changes, and submitting review comments.
+This command provides a systematic workflow for reviewing pull requests using a structured directory approach. It guides you through creating a review task, fetching PR information, analyzing changes, and submitting review comments.
+
+## Review PR Directory Structure
+
+This command uses a structured directory system similar to simple-task to manage PR reviews:
+
+```
+.agdocs/swap/review-pr/
+  index.md                    # List of all review-pr tasks
+  items/
+    {{pr_number}}_{{sub_slug}}/
+      index.md                # Review task overview and instructions
+      status.md               # Current status and procedure checklist
+      human-instructions.md   # Human's review request details
+      tasks.md                # Specific review tasks
+      quick-start.md          # Quick reference for review process
+```
+
+Templates are located in `.agdocs/templates/review-pr/`.
 
 ## Instructions
 
 When a human requests to review a PR, follow these steps:
 
-### 1. List Open Pull Requests
+### Step 0: Check for Existing Review Task
+
+1. Check if `.agdocs/swap/review-pr/index.md` exists
+2. If it exists, check for existing review task for this PR
+3. If review task exists, resume from that task instead of creating new one
+4. If no existing task or index doesn't exist, proceed with creation below
+
+### Step 1: Create Review PR Task Structure
+
+1. **Determine PR number and slug**:
+   - Ask human for PR number if not specified
+   - Generate sub_slug from PR title or let human specify (e.g., "refactor-auth", "fix-bug-123")
+   - Task directory name format: `{{pr_number}}_{{sub_slug}}` (e.g., "5_refactor-commands")
+
+2. **Create index if it doesn't exist**:
+   - Check if `.agdocs/swap/review-pr/index.md` exists
+   - If it doesn't exist, read `.agdocs/templates/review-pr/index.md` and create `.agdocs/swap/review-pr/index.md` with the template content
+
+3. **Create review task directory**:
+   - Create directory `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}`
+
+4. **Create task files from templates**:
+   - Read `.agdocs/templates/review-pr/item/index.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/index.md`
+   - Read `.agdocs/templates/review-pr/item/status.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/status.md`
+   - Read `.agdocs/templates/review-pr/item/human-instructions.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/human-instructions.md`
+   - Read `.agdocs/templates/review-pr/item/tasks.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/tasks.md`
+   - Read `.agdocs/templates/review-pr/item/quick-start.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/quick-start.md`
+   - Replace all placeholders (e.g., `{{pr_number}}`, `{{sub_slug}}`) in the created files with actual values
+
+5. **Update index.md**:
+   - Add entry to `.agdocs/swap/review-pr/index.md` table
+   - Include PR number, sub_slug, description, and status
+
+6. **Fill in human-instructions.md**:
+   - Replace placeholders with actual PR information
+   - Include human's review focus areas
+   - Add any special instructions or context
+
+7. **Continue with detailed review workflow** (steps below)
+
+### Step 2: List Open Pull Requests
 
 Get a list of open PRs using `gh pr list`:
 
@@ -24,7 +82,7 @@ For more detailed information in JSON format:
 gh pr list --json number,title,headRefName,author,updatedAt
 ```
 
-### 2. Select PR to Review
+### Step 3: Select PR to Review
 
 Ask the human which PR they want to review. They can specify by:
 - PR number (e.g., `#123`)
@@ -37,7 +95,7 @@ AI: Which PR would you like to review? (Specify by PR number, branch name, or UR
 Human: #1
 ```
 
-### 3. Fetch PR Details
+### Step 4. Fetch PR Details
 
 Get detailed information about the selected PR:
 
@@ -53,7 +111,7 @@ Display key information to the human:
 - Additions/deletions count
 - Number of commits
 
-### 4. Update Remote Information
+### Step 5. Update Remote Information
 
 Fetch the latest remote information to ensure you have current data:
 
@@ -66,7 +124,7 @@ This command:
 - Prunes deleted remote branches from local references
 - Updates remote tracking references
 
-### 5. Checkout PR Branch
+### Step 6. Checkout PR Branch
 
 Check out the PR's branch locally:
 
@@ -84,7 +142,7 @@ Verify you're on the correct branch:
 git branch --show-current
 ```
 
-### 6. Get List of Changed Files
+### Step 7. Get List of Changed Files
 
 Get the list of files changed in this PR:
 
@@ -100,7 +158,7 @@ git diff --name-only {{base_branch}}...{{head_branch}}
 
 Store this list for systematic review.
 
-### 7. Plan Review Tasks
+### Step 8. Plan Review Tasks
 
 Break down the review into specific, manageable tasks. Consider:
 
@@ -128,7 +186,7 @@ Break down the review into specific, manageable tasks. Consider:
 
 Create a todo list with specific review tasks for the changed files.
 
-### 8. Execute Review Tasks
+### Step 9. Execute Review Tasks
 
 For each review task:
 
@@ -647,6 +705,30 @@ I noticed that `userId` isn't validated before the database query. If an invalid
 - **For detailed GitHub API usage patterns, check `.agdocs/memory/index.md` to find the relevant memory bank**
 - Choose between individual comments (Option A) or batch review (Option B) based on your workflow
 - For batch reviews, all comments appear together when you submit the pending review
+
+### ⚠️ Context Window Management
+
+**CRITICAL**: Your memory has limitations. When reading large amounts of information, earlier context may be lost.
+
+**To prevent memory loss:**
+- **Always use pagination** when reading diffs, file lists, or large outputs
+- Read changed files in small batches (e.g., 5-10 files at a time)
+- Use `head`, `tail`, or line limits when reading large files
+- Don't load entire PR diffs at once if there are many files
+- Review systematically file-by-file rather than all at once
+- If you notice forgetting earlier instructions, re-read `.agdocs/commands/yeah.md`
+
+**Pagination examples:**
+```bash
+# View first 10 changed files only
+gh pr view 5 --json files --jq '.files[:10][].path'
+
+# Read file with line limits
+read_file path/to/file.ts --limit 50
+
+# View diff in chunks
+gh pr diff 5 | head -100
+```
 - Line-specific comments use `position` in diff, not absolute line numbers in files
 - Line-specific comments are immutable once posted (cannot be edited via CLI)
 - Cannot approve your own PRs (use `COMMENT` or `REQUEST_CHANGES` instead)
@@ -686,19 +768,30 @@ For advanced GitHub API operations not covered in this command file, consult the
 ### Comment Tone
 
 - **Avoid evaluative language** - focus on facts and questions
+- **Avoid emotional expressions** - be objective and constructive
+- **Avoid praise or acknowledgment comments** - "Great job!", "This looks good", "LGTM" are unnecessary
+- **Avoid abstract or vague feedback** - be specific and concrete
+- **Don't use excessive politeness** - be direct but respectful
 - Bad: "This is poorly written" 
 - Good: "Consider extracting this logic into a separate function for clarity"
 - Bad: "Nice work on this implementation"
 - Good: (No comment if code is fine - only comment on issues)
+- Bad: "Maybe we could improve this"
+- Good: "This function has O(n²) complexity. Consider using a hash map to reduce it to O(n)"
+- **Gratitude is acceptable** but use sparingly: "Thanks for fixing this" is fine occasionally
 
 ### When to Comment
 
 - **Don't comment just to acknowledge** - silence means approval
+- **Avoid verbose or redundant comments** - each comment should add value
 - Only add comments for:
   - Issues that need fixing
   - Questions that need answers
-  - Suggestions for improvement
+  - Specific, actionable suggestions for improvement
   - Security or performance concerns
+- **Be specific and detailed** when suggesting improvements:
+  - Bad: "This could be better"
+  - Good: "Extract lines 45-67 into a `validateInput()` function. This will improve testability and reusability."
 
 ## Troubleshooting
 

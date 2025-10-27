@@ -2,14 +2,12 @@
 
 ## Getting Started
 
-Follow these steps to begin working on this dev-log:
+Follow these steps to begin working on this simple task:
 
 ### 1. Understand the Context
 
 Read the following documents in order:
 1. [Human Instructions](./human-instructions.md) - Understand what was requested
-2. [Goals](./goals.md) - Know what you're trying to achieve
-3. [Plan](./plan.md) - Understand the overall approach
 
 ### 2. Review Current State
 

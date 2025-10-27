@@ -41,27 +41,19 @@ When a human requests to review a PR, follow these steps:
    - Task directory name format: `{{pr_number}}_{{sub_slug}}` (e.g., "5_refactor-commands")
 
 2. **Create index if it doesn't exist**:
-   ```bash
-   # Check if swap/review-pr/ directory exists
-   if [ ! -d ".agdocs/swap/review-pr" ]; then
-     mkdir -p .agdocs/swap/review-pr
-     cp .agdocs/templates/review-pr/index.md .agdocs/swap/review-pr/index.md
-   fi
-   ```
+   - Check if `.agdocs/swap/review-pr/index.md` exists
+   - If it doesn't exist, read `.agdocs/templates/review-pr/index.md` and create `.agdocs/swap/review-pr/index.md` with the template content
 
 3. **Create review task directory**:
-   ```bash
-   mkdir -p .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}
-   ```
+   - Create directory `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}`
 
 4. **Create task files from templates**:
-   ```bash
-   cp .agdocs/templates/review-pr/item/index.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/index.md
-   cp .agdocs/templates/review-pr/item/status.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/status.md
-   cp .agdocs/templates/review-pr/item/human-instructions.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/human-instructions.md
-   cp .agdocs/templates/review-pr/item/tasks.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/tasks.md
-   cp .agdocs/templates/review-pr/item/quick-start.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/quick-start.md
-   ```
+   - Read `.agdocs/templates/review-pr/item/index.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/index.md`
+   - Read `.agdocs/templates/review-pr/item/status.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/status.md`
+   - Read `.agdocs/templates/review-pr/item/human-instructions.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/human-instructions.md`
+   - Read `.agdocs/templates/review-pr/item/tasks.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/tasks.md`
+   - Read `.agdocs/templates/review-pr/item/quick-start.md` and create `.agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/quick-start.md`
+   - Replace all placeholders (e.g., `{{pr_number}}`, `{{sub_slug}}`) in the created files with actual values
 
 5. **Update index.md**:
    - Add entry to `.agdocs/swap/review-pr/index.md` table

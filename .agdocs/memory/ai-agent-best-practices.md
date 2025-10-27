@@ -4,6 +4,55 @@
 
 This document contains best practices and guidelines specifically for AI agents working in this codebase. These practices help maintain accuracy and prevent common mistakes.
 
+## Memory Architecture and Constraints
+
+### Understanding Your Memory
+
+**Your Memory Structure**: You have a unique memory architecture. When you read large amounts of information at once, older information can be lost from your context. To prevent losing important information:
+
+- **Save large command outputs to temporary files** and read them in small chunks
+- **Limit the amount of information** you load at one time
+- **Re-read critical instructions** (like `.agdocs/commands/yeah.md`) after processing large content
+- **Avoid interactive commands** like `less` that can cause you to get stuck. Instead of using pagers, save output to temporary files and read them in chunks
+
+### Practical Applications
+
+**When reading large outputs**:
+```bash
+# Bad: Read entire diff at once (may lose context)
+gh pr diff 5
+
+# Good: Save to temp file and read in chunks
+gh pr diff 5 > /tmp/pr-diff.txt
+read_file /tmp/pr-diff.txt --offset 1 --limit 100
+read_file /tmp/pr-diff.txt --offset 101 --limit 100
+```
+
+**When processing many files**:
+```bash
+# Bad: List all 50 changed files at once
+gh pr view 5 --json files
+
+# Good: Process in batches
+gh pr view 5 --json files --jq '.files[:10]'
+# Process first 10 files
+# Then get next batch
+gh pr view 5 --json files --jq '.files[10:20]'
+```
+
+**Avoiding interactive commands**:
+```bash
+# Bad: Opens interactive pager (you'll get stuck)
+git log
+less file.txt
+man command
+
+# Good: Use non-interactive alternatives
+git log --oneline | head -20
+cat file.txt | head -50
+command --help > /tmp/help.txt && read_file /tmp/help.txt
+```
+
 ## File Operations
 
 ### Reading Before Writing

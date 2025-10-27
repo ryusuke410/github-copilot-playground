@@ -97,7 +97,14 @@ if [ -d "$SOURCE_AGDOCS/scripts" ]; then
     chmod u+x "$TARGET_DIR/.agdocs/scripts"/*.sh 2>/dev/null || true
 fi
 
-# 6. Copy prompts from .github/prompts (exclude .local.prompt.md files) - if directory exists
+# 6. Initialize swap directory (only .gitignore)
+info "Initializing swap..."
+mkdir -p "$TARGET_DIR/.agdocs/swap"
+if [ -f "$SOURCE_AGDOCS/swap/.gitignore" ]; then
+    cp "$SOURCE_AGDOCS/swap/.gitignore" "$TARGET_DIR/.agdocs/swap/.gitignore"
+fi
+
+# 7. Copy prompts from .github/prompts (exclude .local.prompt.md files) - if directory exists
 if [ -d ".github/prompts" ]; then
     info "Copying prompts..."
     mkdir -p "$TARGET_DIR/.github/prompts"
@@ -113,7 +120,7 @@ if [ -d ".github/prompts" ]; then
     shopt -u nullglob
 fi
 
-# 7. Copy instructions from .github/instructions (exclude .local.instructions.md files) - if directory exists
+# 8. Copy instructions from .github/instructions (exclude .local.instructions.md files) - if directory exists
 if [ -d ".github/instructions" ]; then
     info "Copying instructions..."
     mkdir -p "$TARGET_DIR/.github/instructions"

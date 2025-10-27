@@ -37,7 +37,8 @@ The script copies the following structure:
 
 - ❌ Local files (`*.local.md`, `*.local.prompt.md`, `*.local.instructions.md`)
 - ❌ Project-specific memory banks (only `index.md` template is copied)
-- ❌ **Swap directory** (temporary files, not part of scaffolded structure)
+- ❌ **Swap directory content** (temporary files, not part of scaffolded structure)
+  - ✅ Exception: `swap/.gitignore` **is** copied to ensure proper git behavior
 
 ### After Scaffolding
 
@@ -92,11 +93,15 @@ The script performs these operations in sequence:
 5. **Copy Scripts**: Recursively copies `.agdocs/scripts/` directory
    - Preserves execute permissions
 
-6. **Copy Prompts** (if exists): Copies `.prompt.md` files from `.github/prompts/`
+6. **Initialize Swap**: Creates `.agdocs/swap/` directory
+   - Copies only `.gitignore` file
+   - Does not copy dev-logs, review-pr, simple-tasks, or other swap content
+
+7. **Copy Prompts** (if exists): Copies `.prompt.md` files from `.github/prompts/`
    - **Excludes**: Files ending with `.local.prompt.md`
    - Skips if prompts directory doesn't exist
 
-7. **Copy Instructions** (if exists): Copies `.instructions.md` files from `.github/instructions/`
+8. **Copy Instructions** (if exists): Copies `.instructions.md` files from `.github/instructions/`
    - **Excludes**: Files ending with `.local.instructions.md`  
    - Skips if instructions directory doesn't exist
 
@@ -140,6 +145,7 @@ Copying memory-bank examples...
 Copying templates...
 Initializing memory...
 Copying scripts...
+Initializing swap...
 Copying prompts...
 Copying instructions...
 Successfully scaffolded .agdocs structure to <target_directory>

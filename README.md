@@ -83,38 +83,58 @@ The `.agdocs` directory is the heart of this AI-assisted development system:
 │   ├── add-command.md    # Create new command files
 │   ├── commit-push-pr.md # Git workflow automation
 │   ├── create-dev-branch.md  # Branch creation workflow
+│   ├── create-issue.md   # GitHub issue creation
 │   ├── dev-log.md        # Task management with dev-logs
 │   ├── initialize-memory-bank.md  # Memory bank initialization
 │   ├── review-pr.md      # PR review workflow
+│   ├── simple-task.md    # Lightweight task management
 │   ├── update-docs.md    # Documentation update workflow
+│   ├── update-issue.md   # GitHub issue update
+│   ├── update-pr.md      # PR description update
 │   ├── update-memory-bank-comprehensive.md  # Comprehensive updates
 │   └── update-memory-bank-targeted.md  # Targeted updates
 ├── docs/                  # Documentation
+│   ├── commands/         # Command documentation
+│   │   └── index.md      # Command list and descriptions
 │   └── memory-bank/      # Memory bank system docs
 │       ├── index.md
 │       ├── initial-setup.md
 │       └── examples/     # Example memory banks
+│           ├── github-operations.md
+│           └── ai-agent-best-practices.md
 ├── memory/                # Project knowledge (memory banks)
 │   ├── index.md
 │   ├── project-overview.md
+│   ├── codebase-structure.md
 │   ├── coding-guidelines.md
-│   └── codebase-structure.md
+│   ├── ubiquitous-language.md
+│   ├── suggested-commands.md
+│   ├── github-operations.md
+│   └── ai-agent-best-practices.md
 ├── scripts/               # Helper scripts
 │   └── ask-edit-answer.sh
 ├── swap/                  # Git-ignored working files
-│   └── dev-logs/         # Task tracking
+│   ├── dev-logs/         # Dev-log task tracking
+│   ├── simple-tasks/     # Simple task tracking
+│   └── review-pr/        # PR review tracking
 └── templates/             # Reusable templates
-    ├── dev-logs/
-    └── memory/
+    ├── commands/         # Command templates
+    ├── dev-logs/         # Dev-log templates
+    ├── simple-tasks/     # Simple task templates
+    ├── review-pr/        # PR review templates
+    ├── github-issues/    # GitHub issue templates
+    └── memory/           # Memory bank templates
 ```
 
 ### Key Components
 
-- **Commands**: Structured instructions for AI workflows (e.g., creating branches, reviewing PRs, committing code)
+- **Commands**: Structured instructions for AI workflows (e.g., creating branches, reviewing PRs, committing code, managing GitHub issues)
 - **Memory Banks**: Project knowledge repository in markdown format
 - **Prompts**: GitHub Copilot entry points that reference command files
 - **Scripts**: Interactive helpers for user input collection
 - **Dev-Logs**: Task management system for complex work
+- **Simple Tasks**: Lightweight task management for one-off work
+- **Templates**: Reusable structures for commands, tasks, and documentation
 
 ## Getting Started
 
@@ -151,12 +171,16 @@ The `.agdocs/commands/` directory contains pre-defined workflows:
 - **`add-command.md`**: Create new command files
 - **`commit-push-pr.md`**: Automated git commit, push, and PR creation
 - **`create-dev-branch.md`**: Development branch creation from main
+- **`create-issue.md`**: Create structured GitHub issues from templates
 - **`dev-log.md`**: Task management with dev-logs
 - **`initialize-memory-bank.md`**: Memory bank initialization
 - **`review-pr.md`**: Systematic PR review workflow
+- **`simple-task.md`**: Lightweight mechanism for managing one-off task groups
 - **`update-docs.md`**: Update repository documentation to reflect current reality
+- **`update-issue.md`**: Update existing GitHub issue title and/or description
 - **`update-memory-bank-comprehensive.md`**: Comprehensive memory bank updates
 - **`update-memory-bank-targeted.md`**: Targeted memory bank updates
+- **`update-pr.md`**: Update PR description based on current changes
 
 ## GitHub Copilot Prompts
 
@@ -165,9 +189,13 @@ The `.github/prompts/` directory contains custom prompts for GitHub Copilot:
 - **`awake.prompt.md`**: Standalone prompt for continuous AI agent operation
 - **`commit-push-pr.prompt.md`**: Entry point for commit, push, and PR workflow
 - **`create-dev-branch.prompt.md`**: Entry point for branch creation workflow
+- **`create-issue.prompt.md`**: Entry point for GitHub issue creation workflow
 - **`dev-log.prompt.md`**: Entry point for dev-log task management
 - **`review-pr.prompt.md`**: Entry point for PR review workflow
+- **`simple-task.prompt.md`**: Entry point for simple task management workflow
 - **`update-docs.prompt.md`**: Entry point for documentation update workflow
+- **`update-issue.prompt.md`**: Entry point for GitHub issue update workflow
+- **`update-pr.prompt.md`**: Entry point for PR description update workflow
 - **`yeah.prompt.md`**: Entry point for the yeah command workflow
 
 Most prompts reference their corresponding command files in `.agdocs/commands/`, except `awake.prompt.md` which is self-contained.
@@ -177,10 +205,12 @@ Most prompts reference their corresponding command files in `.agdocs/commands/`,
 Memory banks store project knowledge in a structured, AI-readable format:
 
 - **Project Overview**: Purpose, stakeholders, architecture
-- **Coding Guidelines**: Style guides, naming conventions, best practices
 - **Codebase Structure**: Directory organization, module structure
+- **Coding Guidelines**: Style guides, naming conventions, best practices
 - **Ubiquitous Language**: Domain terminology
+- **Suggested Commands**: Common development and git commands
 - **GitHub Operations**: API usage patterns and workflows
+- **AI Agent Best Practices**: Guidelines for AI agents working in the codebase
 
 Memory banks enable the AI agent to understand your project deeply and provide contextually appropriate suggestions.
 

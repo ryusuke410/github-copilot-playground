@@ -5,4 +5,4 @@
 | memory/suggested-commands.md | Suggested Commands | Common development, git, and project-specific commands | 2025-10-26 |
 | memory/coding-guidelines.md | Coding Guidelines | Code formatting, naming conventions, notation conventions, language requirements, terminal command auto-approval, and best practices | 2025-10-26 |
 | memory/ubiquitous-language.md | Ubiquitous Language | Domain terminology with English and Japanese translations, including standalone prompts, context window, and todo tool | 2025-10-26 |
-| memory/github-operations.md | GitHub Operations | GitHub API usage patterns, including PR review comment creation and resolution via REST and GraphQL APIs | 2025-10-26 |
+| memory/github-operations.md | GitHub Operations | GitHub API usage patterns, including PR review comment resolution, comprehensive GitHub issue operations, and PR update operations via gh CLI | 2025-10-27 |

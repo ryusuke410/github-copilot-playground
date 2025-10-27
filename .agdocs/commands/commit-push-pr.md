@@ -220,6 +220,40 @@ gh pr create --base develop --title "{{title}}" --body "{{body}}"
 - Use `gh auth login` if not authenticated
 - Use `gh auth refresh -s project` if adding PR to projects
 
+### PR Description Best Practices
+
+**Keep PR descriptions concise and focused:**
+- **Don't list every file changed** - Avoid verbose file-by-file descriptions
+- **Summarize overall changes** - Focus on what changed and why, not exhaustive details
+- **Highlight key impacts** - Emphasize important changes, new features, or bug fixes
+- **Be concise** - Reviewers can see the diff; description should provide context, not duplicate it
+- **Use sections sparingly** - Only include sections that add value (e.g., "Breaking Changes", "Migration Notes")
+
+**Bad example (too verbose):**
+```markdown
+## Changes
+
+- Modified file1.ts to add function A
+- Updated file2.ts to fix typo
+- Changed file3.ts to refactor class B
+- Added file4.ts with new helper
+- Modified file5.ts to update imports
+... (listing every file)
+```
+
+**Good example (concise):**
+```markdown
+## Changes
+
+Refactored authentication module for better maintainability and added helper utilities.
+
+## Review Focus
+
+Please check the new authentication flow for security concerns.
+```
+
+**Remember**: The PR diff shows all file changes. The description should explain the "why" and "what", not repeat the "which files".
+
 ## Troubleshooting
 
 ### Authentication Error

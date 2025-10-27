@@ -27,6 +27,7 @@
     "git log": true,
     "git show": true,
     "git diff": true,
+    "git --no-pager diff": true,
     "git grep": true,
     "git branch": true,
     "/^git branch\\b.*-(d|D|m|M|-delete|-force)\\b/": false,

@@ -12,13 +12,12 @@ Use the templates from `./templates/dev-logs/item/`.
 - [ ] 4. Create plan.md from template.
 - [ ] 5. Align understanding with human.
 - [ ] 6. Create tasks.md from template.
-- [ ] 7. Align understanding with human.
-- [ ] 8. Create quick-start.md from template.
-- [ ] 9. Align understanding with human.
-- [ ] 10. Complete all tasks.
-- [ ] 11. Align understanding with human.
-- [ ] 12. Read `.agdocs/commands/yeah.md`.
-- [ ] 13. Ask human for next actions using a script. Never end the conversation.
+- [ ] 7. Create quick-start.md from template.
+- [ ] 8. Align understanding with human.
+- [ ] 9. Complete all tasks.
+- [ ] 10. Align understanding with human.
+- [ ] 11. Read `.agdocs/commands/yeah.md`.
+- [ ] 12. Ask human for next actions using a script. Never end the conversation.
 
 ## Quick Links
 

@@ -1,8 +1,8 @@
-# start-simple-task Command
+# simple-task Command
 
 ## Overview
 
-`start-simple-task` is a lightweight mechanism for managing a simple series of tasks. It provides a streamlined approach to organizing and executing one-off task groups without the overhead of dev-logs. Use this for straightforward, well-defined work that doesn't require extensive planning phases.
+`simple-task` is a lightweight mechanism for managing a simple series of tasks. It provides a streamlined approach to organizing and executing one-off task groups without the overhead of dev-logs. Use this for straightforward, well-defined work that doesn't require extensive planning phases.
 
 ## Directory Structure
 

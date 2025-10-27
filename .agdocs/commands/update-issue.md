@@ -4,6 +4,12 @@
 
 This command updates an existing GitHub issue's title and/or body description. It helps modify issue content while ensuring the human reviews and confirms changes before applying them.
 
+## Prerequisites
+
+Before using this command, review the following memory banks for necessary knowledge:
+- `.agdocs/memory/github-operations.md` - GitHub issue operations and best practices
+- `.agdocs/memory/index.md` - Full list of available memory banks
+
 ## Instructions
 
 When a human requests to update a GitHub issue, follow these steps:
@@ -17,15 +23,14 @@ Determine which issue to update:
 
 **If human describes issue:**
 - List recent issues: `gh issue list --limit 10`
+- Display the list to the human
+- **If issue not found in first 10**: Show next 10 with `gh issue list --limit 10 --offset 10`
+- Continue pagination if needed until issue is found or human provides number
 - Ask human to confirm which issue to update
 
 ### 2. Get Current Issue Content
 
-Retrieve the current issue details:
-
-```bash
-gh issue view {{issue_number}} --json title,body
-```
+Retrieve the current issue details using `gh issue view`. Reference `.agdocs/memory/github-operations.md` for exact command syntax.
 
 Display current content to the human:
 ```
@@ -55,7 +60,16 @@ Based on human input, prepare the new content:
 **If updating body:**
 - Create a temporary file with the new body content:
 ```bash
-cat > /tmp/issue-body-update.md << 'EOF'
+mkdir -p /tmp/agdocs
+cat > /tmp/agdocs/issue-body-update.md << 'EOF'
+{{new_body_content}}
+EOF
+```
+
+**Fallback if `/tmp/` not available:**
+```bash
+mkdir -p .agdocs/swap/tmp
+cat > .agdocs/swap/tmp/issue-body-update.md << 'EOF'
 {{new_body_content}}
 EOF
 ```
@@ -96,22 +110,14 @@ Confirm these changes? (y/n)
 
 ### 6. Apply Updates
 
-Once confirmed, update the issue:
+Once confirmed, update the issue using `gh issue edit`. **Reference `.agdocs/memory/github-operations.md` for exact command syntax and options.**
 
-**Update title and body:**
-```bash
-gh issue edit {{issue_number}} --title "{{new_title}}" --body-file /tmp/issue-body-update.md
-```
+**Important**: Do not copy commands from this file directly. Consult the memory bank for current best practices.
 
-**Update title only:**
-```bash
-gh issue edit {{issue_number}} --title "{{new_title}}"
-```
-
-**Update body only:**
-```bash
-gh issue edit {{issue_number}} --body-file /tmp/issue-body-update.md
-```
+Basic patterns:
+- Update title and body: Refer to memory bank
+- Update title only: Refer to memory bank
+- Update body only: Refer to memory bank
 
 ### 7. Report Result
 
@@ -125,7 +131,9 @@ URL: https://github.com/owner/repo/issues/{{number}}
 
 Remove temporary files:
 ```bash
-rm -f /tmp/issue-body-update.md
+rm -f /tmp/agdocs/issue-body-update.md
+# or if fallback location was used:
+rm -f .agdocs/swap/tmp/issue-body-update.md
 ```
 
 ## Usage Examples
@@ -193,6 +201,9 @@ AI-agent:
 - Handle partial updates (title only or body only)
 - Clean up temporary files after operation
 - If human says "keep current", don't update that field
+- **Paginate through issue lists**: Show 10 at a time, continue if not found
+- **Always reference memory banks** for command syntax and best practices
+- Use `/tmp/agdocs/` for temp files, or `.agdocs/swap/tmp/` as fallback
 
 ## Best Practices
 

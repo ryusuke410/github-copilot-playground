@@ -43,6 +43,14 @@ Create a new file in `.agdocs/commands/{{command_name}}.md` with the following s
 
 [Brief description of what this command does and when to use it]
 
+## Prerequisites
+
+Review the following memory banks for necessary knowledge:
+- `.agdocs/memory/index.md` - Full list of available memory banks
+- [List other relevant memory banks specific to this command]
+
+**Important**: Always consult memory banks for current best practices, command syntax, and implementation patterns before executing operations.
+
 ## Instructions
 
 When a human requests [describe the trigger], follow these steps:
@@ -66,6 +74,7 @@ When a human requests [describe the trigger], follow these steps:
 - [Important considerations]
 - [Edge cases or limitations]
 - [Best practices specific to this command]
+- **Reference memory banks** for command syntax and implementation details
 
 ## Related Commands
 

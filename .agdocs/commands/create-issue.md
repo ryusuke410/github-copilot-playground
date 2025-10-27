@@ -4,11 +4,23 @@
 
 This command creates a new GitHub issue with a structured format based on a template. It collects information from the human and generates a well-formatted issue with completion criteria and optional references.
 
+## Prerequisites
+
+Before using this command, review the following memory banks for necessary knowledge:
+- `.agdocs/memory/github-operations.md` - GitHub issue operations and best practices
+- `.agdocs/memory/index.md` - Full list of available memory banks
+
 ## Instructions
 
 When a human requests to create a GitHub issue, follow these steps:
 
-### 1. Collect Issue Information
+### 1. Select Template
+
+Read `.agdocs/templates/github-issues/index.md` to see available issue templates. Choose the appropriate template based on the human's requirements, or ask the human to select one.
+
+The selected template will guide the structure of the issue body.
+
+### 2. Collect Issue Information
 
 Gather the following information from the human:
 
@@ -24,41 +36,37 @@ If the human doesn't provide all information, ask specific questions:
 - "What are the completion criteria? (Things that need to be done)"
 - "Are there any references or related resources?"
 
-### 2. Generate Issue Body
+### 3. Generate Issue Body
 
-Using the template from `.agdocs/templates/github-issue/general.md`, generate the issue body:
-
-```markdown
-# {{title}}
-
-## Completion Criteria
-
-- [ ] {{criterion_1}}
-- [ ] {{criterion_2}}
-- [ ] {{criterion_3}}
-
-## References
-
-- {{reference_1}}
-- {{reference_2}}
-```
+Using the selected template from `.agdocs/templates/github-issues/items/`, generate the issue body by replacing placeholders with collected information.
 
 **Guidelines:**
 - Use clear, actionable completion criteria
 - Include all references provided by the human
 - Keep the format consistent with the template
+- Follow the template structure without adding unnecessary content
 
-### 3. Create Temporary File
+### 4. Create Temporary File
 
 Create a temporary file with the issue body content:
 
+**Preferred location (create directory if needed):**
 ```bash
-cat > /tmp/issue-body.md << 'EOF'
+mkdir -p /tmp/agdocs
+cat > /tmp/agdocs/issue-body.md << 'EOF'
 [Generated issue body here]
 EOF
 ```
 
-### 4. Display and Confirm
+**Fallback location if `/tmp/` is not available:**
+```bash
+mkdir -p .agdocs/swap/tmp
+cat > .agdocs/swap/tmp/issue-body.md << 'EOF'
+[Generated issue body here]
+EOF
+```
+
+### 5. Display and Confirm
 
 Display the issue details to the human for confirmation:
 
@@ -72,20 +80,23 @@ Body:
 Ready to create this issue? (y/n)
 ```
 
-### 5. Create the Issue
+### 6. Create the Issue
 
-Once confirmed, create the issue using `gh issue create`:
+Once confirmed, create the issue using `gh issue create`. Reference `.agdocs/memory/github-operations.md` for the exact command syntax and options.
 
+**Important**: Do not copy commands from this file directly. Consult the memory bank for current best practices and proper command usage.
+
+Basic pattern:
 ```bash
-gh issue create --title "{{title}}" --body-file /tmp/issue-body.md
+gh issue create --title "{{title}}" --body-file {{temp_file_path}}
 ```
 
-**Options:**
-- Add labels if specified: `--label "bug,enhancement"`
-- Self-assign if requested: `--assignee "@me"`
-- Add to milestone if specified: `--milestone "v1.0"`
+**Options to consider** (see memory bank for details):
+- Add labels if specified
+- Self-assign if requested
+- Add to milestone if specified
 
-### 6. Report Result
+### 7. Report Result
 
 After successful creation:
 - Display the issue URL
@@ -98,12 +109,14 @@ Example:
 URL: https://github.com/owner/repo/issues/7
 ```
 
-### 7. Clean Up
+### 8. Clean Up
 
 Remove the temporary file:
 
 ```bash
-rm -f /tmp/issue-body.md
+rm -f /tmp/agdocs/issue-body.md
+# or if fallback location was used:
+rm -f .agdocs/swap/tmp/issue-body.md
 ```
 
 ## Usage Examples
@@ -148,11 +161,14 @@ AI-agent:
 ## Notes
 
 - Always use `--body-file` instead of `--body` to avoid shell escaping issues
-- Template file is at `.agdocs/templates/github-issue/general.md`
+- Template files are located in `.agdocs/templates/github-issues/items/`
+- See `.agdocs/templates/github-issues/index.md` for available templates
 - If the human provides a full description, use it directly instead of prompting for criteria
 - Clean up temporary files after creation
 - Handle errors gracefully (e.g., network issues, authentication problems)
 - For multi-line or complex content, body-file approach is more reliable
+- **Always reference memory banks** for command syntax and best practices
+- Use `/tmp/agdocs/` for temp files, or `.agdocs/swap/tmp/` as fallback
 
 ## Best Practices
 

@@ -170,3 +170,78 @@ fi
 Use templates from `.agdocs/templates/` as starting points:
 - Dev-log items: `.agdocs/templates/dev-logs/item/`
 - Memory bank index: `.agdocs/templates/memory/index.md`
+
+## Temporary Files
+
+### Location Guidelines
+
+When working with temporary files, follow this priority order:
+
+**1. Preferred: `/tmp/agdocs/` directory**
+```bash
+# Create directory if needed
+mkdir -p /tmp/agdocs
+
+# Use for temporary files
+cat > /tmp/agdocs/temp-file.md << 'EOF'
+Content here
+EOF
+
+# Clean up after use
+rm -f /tmp/agdocs/temp-file.md
+```
+
+**2. Fallback: `.agdocs/swap/tmp/` directory**
+
+If `/tmp/` is not available (e.g., restricted environments):
+```bash
+# Create directory if needed
+mkdir -p .agdocs/swap/tmp
+
+# Use for temporary files
+cat > .agdocs/swap/tmp/temp-file.md << 'EOF'
+Content here
+EOF
+
+# Clean up after use
+rm -f .agdocs/swap/tmp/temp-file.md
+```
+
+### Best Practices
+
+1. **Always create the directory first**: Use `mkdir -p` to ensure directory exists
+2. **Use descriptive names**: `issue-body.md`, `pr-description.md`, not `temp1.md`
+3. **Clean up after use**: Always remove temporary files when done
+4. **Avoid root `/tmp/`**: Don't use `/tmp/file.md` directly; use `/tmp/agdocs/file.md`
+5. **Handle both locations**: Write code that can work with either location
+6. **Check `.gitignore`**: `.agdocs/swap/tmp/` should be in `.gitignore`
+
+### Example Pattern
+
+```bash
+# Determine temp directory
+if [ -w "/tmp" ]; then
+    TEMP_DIR="/tmp/agdocs"
+else
+    TEMP_DIR=".agdocs/swap/tmp"
+fi
+
+# Create and use
+mkdir -p "$TEMP_DIR"
+cat > "$TEMP_DIR/my-file.md" << 'EOF'
+Content
+EOF
+
+# Process...
+
+# Clean up
+rm -f "$TEMP_DIR/my-file.md"
+```
+
+### Why This Structure?
+
+- **Organization**: `/tmp/agdocs/` keeps project temp files together
+- **Visibility**: Clear what files belong to this project
+- **Safety**: Reduces risk of conflicts with other temp files
+- **Portability**: Fallback to project directory ensures compatibility
+- **Cleanup**: Easier to identify and clean up project-specific temp files

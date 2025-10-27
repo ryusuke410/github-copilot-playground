@@ -686,19 +686,30 @@ For advanced GitHub API operations not covered in this command file, consult the
 ### Comment Tone
 
 - **Avoid evaluative language** - focus on facts and questions
+- **Avoid emotional expressions** - be objective and constructive
+- **Avoid praise or acknowledgment comments** - "Great job!", "This looks good", "LGTM" are unnecessary
+- **Avoid abstract or vague feedback** - be specific and concrete
+- **Don't use excessive politeness** - be direct but respectful
 - Bad: "This is poorly written" 
 - Good: "Consider extracting this logic into a separate function for clarity"
 - Bad: "Nice work on this implementation"
 - Good: (No comment if code is fine - only comment on issues)
+- Bad: "Maybe we could improve this"
+- Good: "This function has O(n²) complexity. Consider using a hash map to reduce it to O(n)"
+- **Gratitude is acceptable** but use sparingly: "Thanks for fixing this" is fine occasionally
 
 ### When to Comment
 
 - **Don't comment just to acknowledge** - silence means approval
+- **Avoid verbose or redundant comments** - each comment should add value
 - Only add comments for:
   - Issues that need fixing
   - Questions that need answers
-  - Suggestions for improvement
+  - Specific, actionable suggestions for improvement
   - Security or performance concerns
+- **Be specific and detailed** when suggesting improvements:
+  - Bad: "This could be better"
+  - Good: "Extract lines 45-67 into a `validateInput()` function. This will improve testability and reusability."
 
 ## Troubleshooting
 

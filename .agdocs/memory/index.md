@@ -3,6 +3,7 @@
 | memory/project-overview.md | Project Overview | High-level project information, purpose, stakeholders, timeline, key milestones including AGDocs framework and awake prompt | 2025-10-26 |
 | memory/codebase-structure.md | Codebase Structure | Directory organization, module structure, file naming conventions, root documentation files, VS Code configuration, simple-tasks system | 2025-10-27 |
 | memory/suggested-commands.md | Suggested Commands | Common development, git, and project-specific commands | 2025-10-26 |
-| memory/coding-guidelines.md | Coding Guidelines | Code formatting, naming conventions, notation conventions, language requirements, terminal command auto-approval, and best practices | 2025-10-26 |
+| memory/coding-guidelines.md | Coding Guidelines | Code formatting, naming conventions, notation conventions, language requirements, terminal command auto-approval, temp file best practices, and other best practices | 2025-10-27 |
 | memory/ubiquitous-language.md | Ubiquitous Language | Domain terminology with English and Japanese translations, including standalone prompts, context window, and todo tool | 2025-10-26 |
 | memory/github-operations.md | GitHub Operations | GitHub API usage patterns, including PR review comment resolution, comprehensive GitHub issue operations, and PR update operations via gh CLI | 2025-10-27 |
+| memory/ai-agent-best-practices.md | AI Agent Best Practices | Best practices for AI agents: file operations (read before write, avoid sed for renumbering), context window management, task management, error prevention, communication, and tool usage | 2025-10-27 |

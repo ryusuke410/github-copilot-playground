@@ -713,6 +713,30 @@ I noticed that `userId` isn't validated before the database query. If an invalid
 - **For detailed GitHub API usage patterns, check `.agdocs/memory/index.md` to find the relevant memory bank**
 - Choose between individual comments (Option A) or batch review (Option B) based on your workflow
 - For batch reviews, all comments appear together when you submit the pending review
+
+### ⚠️ Context Window Management
+
+**CRITICAL**: Your memory has limitations. When reading large amounts of information, earlier context may be lost.
+
+**To prevent memory loss:**
+- **Always use pagination** when reading diffs, file lists, or large outputs
+- Read changed files in small batches (e.g., 5-10 files at a time)
+- Use `head`, `tail`, or line limits when reading large files
+- Don't load entire PR diffs at once if there are many files
+- Review systematically file-by-file rather than all at once
+- If you notice forgetting earlier instructions, re-read `.agdocs/commands/yeah.md`
+
+**Pagination examples:**
+```bash
+# View first 10 changed files only
+gh pr view 5 --json files --jq '.files[:10][].path'
+
+# Read file with line limits
+read_file path/to/file.ts --limit 50
+
+# View diff in chunks
+gh pr diff 5 | head -100
+```
 - Line-specific comments use `position` in diff, not absolute line numbers in files
 - Line-specific comments are immutable once posted (cannot be edited via CLI)
 - Cannot approve your own PRs (use `COMMENT` or `REQUEST_CHANGES` instead)

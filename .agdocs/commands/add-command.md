@@ -118,9 +118,15 @@ Ensure the new files follow conventions:
 ### 7. Update Documentation
 
 Consider updating related documentation:
+- **Add entry to `.agdocs/docs/commands/index.md`** with command name and brief description
 - Add entry to `.agdocs/memory/suggested-commands.md` if it's a commonly used command
 - Update `.agdocs/memory/codebase-structure.md` if it introduces new patterns
 - Cross-reference from related command files
+
+**Format for commands/index.md**:
+```markdown
+| command-name | Brief Description |
+```
 
 ### 8. Report Completion
 

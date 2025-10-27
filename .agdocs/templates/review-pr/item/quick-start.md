@@ -4,11 +4,26 @@
 
 Follow these steps to begin working on this PR review:
 
+### 0. Important Reminders
+
+⚠️ **Context Window Management**:
+- Your memory has limitations. Reading too much information at once can cause earlier context to be lost.
+- **Always use pagination** when reading diffs, file lists, or large outputs
+- Read changed files in small batches (5-10 files at a time)
+- Review systematically file-by-file rather than loading everything at once
+- If you notice forgetting instructions, re-read `.agdocs/commands/yeah.md`
+
+🔍 **GitHub Operations**:
+- Before performing GitHub operations (PR comments, issue updates, etc.), **read the memory-bank** first
+- Check `.agdocs/memory/github-operations.md` for correct API usage patterns
+- Use memory-bank to understand proper command syntax and avoid common mistakes
+
 ### 1. Understand the Context
 
 Read the following documents in order:
 1. [Human Instructions](./human-instructions.md) - Understand the review request and focus areas
 2. [Index](./index.md) - Know the overall status
+3. **`.agdocs/memory/github-operations.md`** - Understand GitHub API patterns before reviewing
 
 ### 2. Review Current State
 
@@ -19,14 +34,21 @@ Read the following documents in order:
 
 1. Edit [tasks.md](./tasks.md) to reorder tasks based on priority or PR structure
 2. Add specific tasks for complex changes
+3. **Break down by files**: Aim for at least 1 task per file (more for large files)
 
 ### 4. Start Working
 
 1. Pick the next task from the task list
 2. Read the task details
-3. Begin review
-4. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
-5. Update the task status as you progress
+3. **Use pagination**: Don't load entire PR diff at once
+4. Begin review
+5. **Check related files for consistency**: Don't just review the changed file in isolation
+   - Look at files that import/use the changed code
+   - Check if interfaces/contracts are maintained
+   - Verify consistency with related modules
+   - Example: If reviewing `auth/login.ts`, also check `middleware/auth.ts`, `types/auth.ts`
+5. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
+6. Update the task status as you progress
 
 ### 5. Handle Task Modifications
 

@@ -84,18 +84,26 @@ When a human requests [describe the trigger], follow these steps:
 
 ### 5. Create Prompt Entry Point
 
-Unless explicitly instructed not to, create `.github/prompts/{{command_name}}.prompt.md`:
+Unless explicitly instructed not to, create `.github/prompts/{{command_name}}.prompt.md`.
 
+**Select appropriate template:**
+1. Read `.agdocs/templates/commands/index.md` to see available prompt templates
+2. Choose the template that best matches the command's purpose
+3. Use the selected template as a starting point
+
+**Basic template (most common):**
 ```markdown
 Read {{repo_root}}/.agdocs/commands/{{command_name}}.md
 ```
 
-Or with additional context if needed:
-
+**With additional context:**
 ```markdown
 1. Read {{repo_root}}/.agdocs/commands/{{command_name}}.md
 2. Follow human instructions.
 ```
+
+**For complex commands:**
+Reference the selected template from `.agdocs/templates/commands/items/` and customize as needed.
 
 ### 6. Verify Structure
 

@@ -2,13 +2,79 @@
 
 ## Overview
 
-This command provides a systematic workflow for reviewing pull requests. It guides you through fetching PR information, checking out the branch, analyzing changes, and submitting review comments.
+This command provides a systematic workflow for reviewing pull requests using a structured directory approach. It guides you through creating a review task, fetching PR information, analyzing changes, and submitting review comments.
+
+## Review PR Directory Structure
+
+This command uses a structured directory system similar to simple-task to manage PR reviews:
+
+```
+.agdocs/swap/review-pr/
+  index.md                    # List of all review-pr tasks
+  items/
+    {{pr_number}}_{{sub_slug}}/
+      index.md                # Review task overview and instructions
+      status.md               # Current status and procedure checklist
+      human-instructions.md   # Human's review request details
+      tasks.md                # Specific review tasks
+      quick-start.md          # Quick reference for review process
+```
+
+Templates are located in `.agdocs/templates/review-pr/`.
 
 ## Instructions
 
 When a human requests to review a PR, follow these steps:
 
-### 1. List Open Pull Requests
+### Step 0: Check for Existing Review Task
+
+1. Check if `.agdocs/swap/review-pr/index.md` exists
+2. If it exists, check for existing review task for this PR
+3. If review task exists, resume from that task instead of creating new one
+4. If no existing task or index doesn't exist, proceed with creation below
+
+### Step 1: Create Review PR Task Structure
+
+1. **Determine PR number and slug**:
+   - Ask human for PR number if not specified
+   - Generate sub_slug from PR title or let human specify (e.g., "refactor-auth", "fix-bug-123")
+   - Task directory name format: `{{pr_number}}_{{sub_slug}}` (e.g., "5_refactor-commands")
+
+2. **Create index if it doesn't exist**:
+   ```bash
+   # Check if swap/review-pr/ directory exists
+   if [ ! -d ".agdocs/swap/review-pr" ]; then
+     mkdir -p .agdocs/swap/review-pr
+     cp .agdocs/templates/review-pr/index.md .agdocs/swap/review-pr/index.md
+   fi
+   ```
+
+3. **Create review task directory**:
+   ```bash
+   mkdir -p .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}
+   ```
+
+4. **Create task files from templates**:
+   ```bash
+   cp .agdocs/templates/review-pr/item/index.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/index.md
+   cp .agdocs/templates/review-pr/item/status.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/status.md
+   cp .agdocs/templates/review-pr/item/human-instructions.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/human-instructions.md
+   cp .agdocs/templates/review-pr/item/tasks.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/tasks.md
+   cp .agdocs/templates/review-pr/item/quick-start.md .agdocs/swap/review-pr/items/{{pr_number}}_{{sub_slug}}/quick-start.md
+   ```
+
+5. **Update index.md**:
+   - Add entry to `.agdocs/swap/review-pr/index.md` table
+   - Include PR number, sub_slug, description, and status
+
+6. **Fill in human-instructions.md**:
+   - Replace placeholders with actual PR information
+   - Include human's review focus areas
+   - Add any special instructions or context
+
+7. **Continue with detailed review workflow** (steps below)
+
+### Step 2: List Open Pull Requests
 
 Get a list of open PRs using `gh pr list`:
 
@@ -24,7 +90,7 @@ For more detailed information in JSON format:
 gh pr list --json number,title,headRefName,author,updatedAt
 ```
 
-### 2. Select PR to Review
+### Step 3: Select PR to Review
 
 Ask the human which PR they want to review. They can specify by:
 - PR number (e.g., `#123`)
@@ -37,7 +103,7 @@ AI: Which PR would you like to review? (Specify by PR number, branch name, or UR
 Human: #1
 ```
 
-### 3. Fetch PR Details
+### Step 4. Fetch PR Details
 
 Get detailed information about the selected PR:
 
@@ -53,7 +119,7 @@ Display key information to the human:
 - Additions/deletions count
 - Number of commits
 
-### 4. Update Remote Information
+### Step 5. Update Remote Information
 
 Fetch the latest remote information to ensure you have current data:
 
@@ -66,7 +132,7 @@ This command:
 - Prunes deleted remote branches from local references
 - Updates remote tracking references
 
-### 5. Checkout PR Branch
+### Step 6. Checkout PR Branch
 
 Check out the PR's branch locally:
 
@@ -84,7 +150,7 @@ Verify you're on the correct branch:
 git branch --show-current
 ```
 
-### 6. Get List of Changed Files
+### Step 7. Get List of Changed Files
 
 Get the list of files changed in this PR:
 
@@ -100,7 +166,7 @@ git diff --name-only {{base_branch}}...{{head_branch}}
 
 Store this list for systematic review.
 
-### 7. Plan Review Tasks
+### Step 8. Plan Review Tasks
 
 Break down the review into specific, manageable tasks. Consider:
 
@@ -128,7 +194,7 @@ Break down the review into specific, manageable tasks. Consider:
 
 Create a todo list with specific review tasks for the changed files.
 
-### 8. Execute Review Tasks
+### Step 9. Execute Review Tasks
 
 For each review task:
 

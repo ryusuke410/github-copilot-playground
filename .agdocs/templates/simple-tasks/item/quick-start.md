@@ -22,9 +22,19 @@ Read the following documents in order:
 1. Pick the next task from the task list
 2. Read the task details and acceptance criteria
 3. Begin implementation
-4. Update the task status as you progress
+4. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
+5. Update the task status as you progress
 
-### 5. Document Progress
+### 5. Handle Task Modifications
+
+**If human requests task additions or modifications:**
+1. **First, update [human-instructions.md](./human-instructions.md)** with the new requirements
+2. Then, reorganize and update [tasks.md](./tasks.md) accordingly
+3. Continue with the updated task list
+
+This ensures the human's intent is documented before task restructuring.
+
+### 6. Document Progress
 
 - Update task status in [tasks.md](./tasks.md)
 - Add notes or findings to relevant documents

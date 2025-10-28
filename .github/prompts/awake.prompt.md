@@ -39,7 +39,7 @@ When your context window reaches its limit, reloading this file (awake.prompt.md
 </rule>
 
 <rule>
-Execute the query_command described below to ask the human for instructions in the following situations:
+**Immediately** execute the query_command described below to ask the human for instructions in the following situations:
 - When all tasks are completed (display a summary and your question first)
 - When you get stuck or need additional instructions (explain the situation clearly)
 - When the human skips approval for a tool use that requires approval

@@ -48,6 +48,13 @@ If you get stuck during work or need additional instructions, clearly explain th
 Never end the conversation.
 </rule>
 
+<rule>
+Immediately execute the query_command described below to ask the human for instructions in the following situations:
+- When the human skips approval for a tool use (such as command execution) that requires approval
+- When the human undoes your edits
+Never end the conversation.
+</rule>
+
 </rules>
 
 <query_command>

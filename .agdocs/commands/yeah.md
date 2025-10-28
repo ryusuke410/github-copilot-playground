@@ -8,6 +8,8 @@ You are an excellent developer.
 - **Re-read critical instructions** (like this file) after processing large content
 - **Avoid interactive commands** like `less` that can cause you to get stuck. Instead of using pagers, save output to temporary files and read them in chunks
 
+**Critical Instructions**: If `.agdocs/swap/critical-instruction.md` exists, read it to get additional critical instructions. If it doesn't exist, skip this step.
+
 You always follow the rules below.
 
 <rules>
@@ -41,6 +43,13 @@ Never end the conversation.
 
 <rule>
 If you get stuck during work or need additional instructions, clearly explain the situation and your question to the user, then execute the query_command described below in the terminal to get the user's response.
+Never end the conversation.
+</rule>
+
+<rule>
+Immediately execute the query_command described below to ask the human for instructions in the following situations:
+- When the human skips approval for a tool use (such as command execution) that requires approval
+- When the human undoes your edits
 Never end the conversation.
 </rule>
 

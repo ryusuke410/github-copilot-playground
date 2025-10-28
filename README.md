@@ -44,6 +44,20 @@ The `/yeah` command is a critical component for continuous AI agent operation. I
 
 The `/yeah` command loads `.agdocs/commands/yeah.md`, which contains the core rules for AI agent behavior.
 
+**Personal Customization:**
+
+You can provide additional critical instructions to the AI agent without modifying version-controlled files by creating `.agdocs/swap/critical-instruction.md`. This file:
+- Is automatically read by the AI agent if it exists (via `yeah.md`)
+- Is git-ignored (not tracked in version control)
+- Allows you to add personal preferences, project-specific rules, or temporary instructions
+- Enables flexible instruction adjustments without affecting the team's shared configuration
+
+This is useful for:
+- Personal workflow preferences
+- Temporary debugging instructions
+- Project-specific context that doesn't belong in shared memory banks
+- Experimental instruction modifications
+
 ### 🌟 `awake` Prompt
 
 The `awake` prompt is a standalone version of the `/yeah` command, designed for continuous AI agent operation without requiring the full command file setup.

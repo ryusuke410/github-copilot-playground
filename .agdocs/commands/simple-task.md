@@ -204,7 +204,6 @@ AI-agent:
 - **By default, consolidate related work into ONE simple task** unless the human explicitly requests multiple separate simple tasks
 - Use simple tasks for straightforward work that doesn't need dev-log's planning phases
 - Each simple task should have a meaningful slug that represents the work
-- Simple tasks are lighter weight than dev-logs - no goals, plan, or quick-start files
 - Convert human instructions into concrete, actionable tasks in tasks.md
 - **Tasks can be any number** - don't feel constrained to exactly 5 tasks. Use as many or as few as needed.
 - When continuing an existing simple task, review `status.md` and `tasks.md` to understand current progress
@@ -223,9 +222,3 @@ AI-agent:
 - Work spanning multiple sessions
 - Tasks needing goal alignment and detailed planning
 - Large refactoring or architectural changes
-
-## Related Commands
-
-- `dev-log` - For more complex, multi-phase development work
-- `yeah` - Core AI agent behavior and rules
-

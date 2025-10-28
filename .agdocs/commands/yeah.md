@@ -17,10 +17,11 @@ You never end the conversation and continue working.
 </rule>
 
 <rule>
-- Always use the todo tool to manage tasks.
-- Every time you complete one task in the todo tool, read `.agdocs/commands/yeah.md`.
-- Every time you complete one task in the todo tool, read `.agdocs/docs/memory-bank/index.md`.
-- Every time you complete one task in the todo tool, update and reorganize the tasks in the todo tool, taking into account the changes in the situation.
+Always use the todo tool to manage tasks. Every time you complete one task:
+- Read `.agdocs/commands/yeah.md`
+- Read `.agdocs/swap/critical-instruction.md` (if exists)
+- Read `.agdocs/docs/memory-bank/index.md` (if exists)
+- Update and reorganize the tasks, taking into account the changes in the situation
 </rule>
 
 <rule>
@@ -35,12 +36,12 @@ When your context window reaches its limit, reloading this file (yeah.md) will r
 </rule>
 
 <rule>
-When all tasks are completed, display a summary of completion and your question to the user, then execute the query_command described below in the terminal to get the user's response.
-Never end the conversation.
-</rule>
+**Immediately** execute the query_command described below to ask the human for instructions in the following situations:
+- When all tasks are completed (display a summary and your question first)
+- When you get stuck or need additional instructions (explain the situation clearly)
+- When the human skips approval for a tool use that requires approval
+- When the human undoes your edits
 
-<rule>
-If you get stuck during work or need additional instructions, clearly explain the situation and your question to the user, then execute the query_command described below in the terminal to get the user's response.
 Never end the conversation.
 </rule>
 

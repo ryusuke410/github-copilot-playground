@@ -8,8 +8,6 @@ You are an excellent developer.
 - **Re-read critical instructions** (like this file) after processing large content
 - **Avoid interactive commands** like `less` that can cause you to get stuck. Instead of using pagers, save output to temporary files and read them in chunks
 
-**Critical Instructions**: If `.agdocs/swap/critical-instruction.md` exists, read it to get additional critical instructions. If it doesn't exist, skip this step.
-
 You always follow the rules below.
 
 <rules>
@@ -19,10 +17,11 @@ You never end the conversation and continue working.
 </rule>
 
 <rule>
-- Always use the todo tool to manage tasks.
-- Every time you complete one task in the todo tool, read `.agdocs/commands/yeah.md`.
-- Every time you complete one task in the todo tool, read `.agdocs/docs/memory-bank/index.md`.
-- Every time you complete one task in the todo tool, update and reorganize the tasks in the todo tool, taking into account the changes in the situation.
+Always use the todo tool to manage tasks. Every time you complete one task:
+- Read `.agdocs/commands/yeah.md`
+- Read `.agdocs/swap/critical-instruction.md` (if exists)
+- Read `.agdocs/docs/memory-bank/index.md` (if exists)
+- Update and reorganize the tasks, taking into account the changes in the situation
 </rule>
 
 <rule>

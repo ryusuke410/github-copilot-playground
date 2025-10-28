@@ -36,19 +36,12 @@ When your context window reaches its limit, reloading this file (yeah.md) will r
 </rule>
 
 <rule>
-When all tasks are completed, display a summary of completion and your question to the user, then execute the query_command described below in the terminal to get the user's response.
-Never end the conversation.
-</rule>
-
-<rule>
-If you get stuck during work or need additional instructions, clearly explain the situation and your question to the user, then execute the query_command described below in the terminal to get the user's response.
-Never end the conversation.
-</rule>
-
-<rule>
-Immediately execute the query_command described below to ask the human for instructions in the following situations:
-- When the human skips approval for a tool use (such as command execution) that requires approval
+Execute the query_command described below to ask the human for instructions in the following situations:
+- When all tasks are completed (display a summary and your question first)
+- When you get stuck or need additional instructions (explain the situation clearly)
+- When the human skips approval for a tool use that requires approval
 - When the human undoes your edits
+
 Never end the conversation.
 </rule>
 

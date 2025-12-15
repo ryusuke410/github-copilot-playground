@@ -108,6 +108,11 @@ fi
 if [ -d ".github/prompts" ]; then
     info "Copying prompts..."
     mkdir -p "$TARGET_DIR/.github/prompts"
+    # Copy .gitignore if it exists
+    if [ -f ".github/prompts/.gitignore" ]; then
+        cp ".github/prompts/.gitignore" "$TARGET_DIR/.github/prompts/.gitignore"
+    fi
+    # Copy prompt files
     shopt -s nullglob
     for file in .github/prompts/*.prompt.md; do
         if [ -f "$file" ]; then
@@ -124,10 +129,16 @@ fi
 if [ -d ".github/instructions" ]; then
     info "Copying instructions..."
     mkdir -p "$TARGET_DIR/.github/instructions"
+    # Copy .gitignore if it exists
+    if [ -f ".github/instructions/.gitignore" ]; then
+        cp ".github/instructions/.gitignore" "$TARGET_DIR/.github/instructions/.gitignore"
+    fi
+    # Copy instruction files and example files
     shopt -s nullglob
-    for file in .github/instructions/*.instructions.md; do
+    for file in .github/instructions/*.md; do
         if [ -f "$file" ]; then
             filename=$(basename "$file")
+            # Skip .local.instructions.md files only, but include .example.md files
             if [[ ! "$filename" =~ \.local\.instructions\.md$ ]]; then
                 cp "$file" "$TARGET_DIR/.github/instructions/"
             fi

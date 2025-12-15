@@ -6,7 +6,6 @@
 github-copilot-playground/
 ├── .agdocs/                    # AI agent documentation
 │   ├── commands/               # Command definitions for AI workflows
-│   │   ├── yeah.md
 │   │   ├── commit-push-pr.md
 │   │   ├── review-pr.md
 │   │   ├── create-dev-branch.md
@@ -67,7 +66,9 @@ github-copilot-playground/
 │   │   ├── review-pr.prompt.md
 │   │   ├── simple-task.prompt.md
 │   │   └── update-docs.prompt.md
-│   └── instructions/           # GitHub instructions (if any)
+│   └── instructions/           # AI agent instructions
+│       ├── yeah.local.instructions.md  # Personal instructions (git-ignored)
+│       └── yeah.local.instructions.example.md  # Example template
 ├── .vscode/                    # VS Code configuration
 │   └── settings.json           # Terminal command auto-approval rules
 ├── docs/                       # Development documentation
@@ -88,17 +89,19 @@ The project is organized around ai-agent workflows:
 Defines specific ai-agent behaviors and workflows. These files contain the actual instructions and procedures that the ai-agent follows.
 
 ### Prompt Entry Points (`.github/prompts/`)
-Custom prompts that serve as entry points for ai-agent workflows. These files typically contain simple instructions to read the corresponding command file, such as:
+Custom prompts that serve as entry points for ai-agent workflows. Most prompt files contain simple instructions to read the corresponding command file, such as:
 ```
 Read {{repo_root}}/.agdocs/commands/command-name.md
 ```
 
 **Key distinction:**
-- **Prompt files** (`.github/prompts/*.prompt.md`): Entry points that reference command files
-- **Command files** (`.agdocs/commands/*.md`): Actual content with detailed instructions
+- **Prompt files** (`.github/prompts/*.prompt.md`): Entry points that reference command files or instructions
+- **Command files** (`.agdocs/commands/*.md`): Actual content with detailed instructions for most workflows
+- **Instruction files** (`.github/instructions/*.md`): Instructions used by specific prompts (like `yeah.prompt.md`)
 
-**Special case - awake.prompt.md:**
-This is a standalone prompt file that does NOT reference a command file. It contains complete instructions for keeping the ai-agent active during extended work sessions. It provides task management rules, context reloading triggers, and query commands for continuous human interaction.
+**Special cases:**
+- **`awake.prompt.md`**: Standalone prompt file that does NOT reference a command file. It contains complete instructions for keeping the ai-agent active during extended work sessions.
+- **`yeah.prompt.md`**: References `.github/instructions/yeah.local.instructions.md` instead of a command file, providing better performance for frequently-accessed instructions.
 
 ### Memory Bank (`memory/`)
 Stores project knowledge in markdown files
@@ -135,6 +138,14 @@ Permanent knowledge repository. Files here document project structure, rules, an
 
 ### `.github/prompts/`
 Custom prompts that configure GitHub Copilot behavior for specific workflows.
+
+### `.github/instructions/`
+**Git-ignored directory** for AI agent instruction files. This directory provides better performance for frequently-accessed instructions compared to reading from command files repeatedly.
+
+- **`yeah.local.instructions.md`**: Personal instructions file used by `yeah.prompt.md` (git-ignored, auto-created from example on first use)
+- **`yeah.local.instructions.example.md`**: Template for creating local instructions
+
+The instructions format allows the AI agent to access critical rules more efficiently than the command file pattern.
 
 ### `scripts/`
 Helper scripts for interactive workflows (e.g., user input collection) and development automation.

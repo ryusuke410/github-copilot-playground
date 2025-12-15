@@ -42,12 +42,15 @@ The `/yeah` command is a critical component for continuous AI agent operation. I
 2. Type `/yeah` 
 3. Follow with your task description or instructions
 
-The `/yeah` command loads `.agdocs/commands/yeah.md`, which contains the core rules for AI agent behavior.
+The `/yeah` command uses `.github/prompts/yeah.prompt.md`, which references `.github/instructions/yeah.local.instructions.md` for the core rules for AI agent behavior.
 
 **Personal Customization:**
 
-You can provide additional critical instructions to the AI agent without modifying version-controlled files by creating `.agdocs/swap/critical-instruction.md`. This file:
-- Is automatically read by the AI agent if it exists (via `yeah.md`)
+The `.github/instructions/` directory contains AI agent instructions:
+- **`yeah.local.instructions.md`**: Your personal instructions file (git-ignored)
+- **`yeah.local.instructions.example.md`**: Example template for creating your local instructions
+
+When you first use `/yeah`, if `yeah.local.instructions.md` doesn't exist, the AI agent will copy it from the example file. This file:
 - Is git-ignored (not tracked in version control)
 - Allows you to add personal preferences, project-specific rules, or temporary instructions
 - Enables flexible instruction adjustments without affecting the team's shared configuration
@@ -93,7 +96,6 @@ The `.agdocs` directory is the heart of this AI-assisted development system:
 ```
 .agdocs/
 ├── commands/              # AI agent workflow definitions
-│   ├── yeah.md           # Core AI agent rules
 │   ├── add-command.md    # Create new command files
 │   ├── commit-push-pr.md # Git workflow automation
 │   ├── create-dev-branch.md  # Branch creation workflow
@@ -181,7 +183,6 @@ The `.agdocs` directory is the heart of this AI-assisted development system:
 
 The `.agdocs/commands/` directory contains pre-defined workflows:
 
-- **`yeah.md`**: Core AI agent behavior and rules
 - **`add-command.md`**: Create new command files
 - **`commit-push-pr.md`**: Automated git commit, push, and PR creation
 - **`create-dev-branch.md`**: Development branch creation from main
@@ -196,7 +197,9 @@ The `.agdocs/commands/` directory contains pre-defined workflows:
 - **`update-memory-bank-targeted.md`**: Targeted memory bank updates
 - **`update-pr.md`**: Update PR description based on current changes
 
-## GitHub Copilot Prompts
+## GitHub Copilot Configuration
+
+### `.github/prompts/` - Custom Prompts
 
 The `.github/prompts/` directory contains custom prompts for GitHub Copilot:
 
@@ -212,7 +215,16 @@ The `.github/prompts/` directory contains custom prompts for GitHub Copilot:
 - **`update-pr.prompt.md`**: Entry point for PR description update workflow
 - **`yeah.prompt.md`**: Entry point for the yeah command workflow
 
-Most prompts reference their corresponding command files in `.agdocs/commands/`, except `awake.prompt.md` which is self-contained.
+Most prompts reference their corresponding command files in `.agdocs/commands/`. The `awake.prompt.md` is self-contained, and `yeah.prompt.md` references instructions in `.github/instructions/`.
+
+### `.github/instructions/` - AI Agent Instructions
+
+The `.github/instructions/` directory contains AI agent instruction files:
+
+- **`yeah.local.instructions.md`**: Personal instructions file for the `/yeah` command (git-ignored, created from example on first use)
+- **`yeah.local.instructions.example.md`**: Example template for local instructions
+
+This directory enables better performance for frequently-accessed instructions compared to reading from command files repeatedly.
 
 ## Memory Bank System
 

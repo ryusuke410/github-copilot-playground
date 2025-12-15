@@ -98,10 +98,13 @@ The script performs these operations in sequence:
    - Does not copy dev-logs, review-pr, simple-tasks, or other swap content
 
 7. **Copy Prompts** (if exists): Copies `.prompt.md` files from `.github/prompts/`
+   - Copies `.gitignore` file if it exists
    - **Excludes**: Files ending with `.local.prompt.md`
    - Skips if prompts directory doesn't exist
 
-8. **Copy Instructions** (if exists): Copies `.instructions.md` files from `.github/instructions/`
+8. **Copy Instructions** (if exists): Copies `.md` files from `.github/instructions/`
+   - Copies `.gitignore` file if it exists
+   - Copies example files (e.g., `yeah.local.instructions.example.md`)
    - **Excludes**: Files ending with `.local.instructions.md`  
    - Skips if instructions directory doesn't exist
 
@@ -114,6 +117,10 @@ The script excludes the following file patterns:
 - `*.local.instructions.md` - Local instruction files
 
 These files typically contain project-specific or developer-specific configurations that should not be copied to new projects.
+
+**Files that ARE copied:**
+- `*.example.md` - Example template files (e.g., `yeah.local.instructions.example.md`)
+- `.gitignore` - Git ignore files in prompts and instructions directories
 
 ## Error Handling
 

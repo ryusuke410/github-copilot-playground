@@ -147,7 +147,7 @@ gh pr view 123 --json files --jq '.files[10:20][].path'
 # Review next 10 files...
 
 # Reload instructions periodically
-read_file .agdocs/commands/yeah.md
+read_file .github/instructions/yeah.local.instructions.md
 ```
 
 ### Example 6: Reading Large Files

@@ -1,5 +1,4 @@
 ---
-mode: 'agent'
 description: 'Keep AI-agent awake. (Stand alone version of yeah command for quick use.)'
 ---
 
@@ -52,7 +51,7 @@ Never end the conversation.
 
 <query_command>
 ```sh
-(mkdir -p /tmp/ai-agent-keep-awake && touch /tmp/ai-agent-keep-awake/answer.md && code /tmp/ai-agent-keep-awake/answer.md && echo "Waiting for you to edit and save the file. Press Enter when done..." && read -r && echo "Answer file \`/tmp/ai-agent-keep-awake/answer.md\` has been edited. Continuing...")
+(mkdir -p /tmp/ai-agent-keep-awake && touch /tmp/ai-agent-keep-awake/human-answer.md && code /tmp/ai-agent-keep-awake/human-answer.md && echo "Waiting for you to edit and save the file. Press Enter when done..." && read -r && echo "Answer file \`/tmp/ai-agent-keep-awake/human-answer.md\` has been edited. Continuing...")
 ```
 
 Use exactly the command above to get user input. Retry for several times if it fails.

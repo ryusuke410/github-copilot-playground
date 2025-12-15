@@ -11,7 +11,7 @@ Follow these steps to begin working on this PR review:
 - **Always use pagination** when reading diffs, file lists, or large outputs
 - Read changed files in small batches (5-10 files at a time)
 - Review systematically file-by-file rather than loading everything at once
-- If you notice forgetting instructions, re-read `.agdocs/commands/yeah.md`
+- If you notice forgetting instructions, re-read `.github/instructions/yeah.local.instructions.md`
 
 🔍 **GitHub Operations**:
 - Before performing GitHub operations (PR comments, issue updates, etc.), **read the memory-bank** first
@@ -48,7 +48,7 @@ Read the following documents in order:
    - Verify consistency with related modules
    - Example: If reviewing `auth/login.ts`, also check `middleware/auth.ts`, `types/auth.ts`
 6. **After completing each task**:
-   - Read `.agdocs/commands/yeah.md` to maintain workflow context
+   - Read `.github/instructions/yeah.local.instructions.md` to maintain workflow context
    - **Check the List of Changes section in [tasks.md](./tasks.md)** to verify it's complete and accurate
    - If the List of Changes is incomplete or outdated, update it to reflect all changes made
 7. Update the task status as you progress
@@ -79,7 +79,7 @@ This ensures the human's intent is documented before task restructuring.
 ## Commands
 
 - `.agdocs/commands/review-pr.md` - Complete PR review workflow
-- `.agdocs/commands/yeah.md` - Workflow management
+- `.github/instructions/yeah.local.instructions.md` - Workflow management
 
 ## Related Resources
 

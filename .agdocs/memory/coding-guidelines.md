@@ -90,7 +90,7 @@ Examples:
 4. Respect `.gitignore` rules (especially `.agdocs/swap/`)
 
 ### AI Agent Workflows
-1. Read `yeah.md` and relevant command files before starting work
+1. Read `.github/instructions/yeah.local.instructions.md` and relevant command files before starting work
 2. Use todo tool for task management
 3. Check dev-log status regularly
 4. Update memory banks when project structure changes

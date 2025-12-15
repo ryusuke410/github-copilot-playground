@@ -8,7 +8,7 @@ This document defines the domain-specific terminology used throughout the projec
 |--------------|----------------------|------------|---------------|
 | Memory Bank | メモリバンク | A markdown file containing project knowledge such as structure, rules, procedures, or domain terminology | "Update the memory bank when the project structure changes" |
 | Dev-Log | 開発ログ | A development task management system using structured markdown files to track goals, plans, and tasks | "Create a dev-log for the authentication feature implementation" |
-| ai-agent | AIエージェント | GitHub Copilot or similar AI system following structured commands and documentation (lowercase with hyphen) | "The ai-agent reads yeah.md before starting work" |
+| ai-agent | AIエージェント | GitHub Copilot or similar AI system following structured commands and documentation (lowercase with hyphen) | "The ai-agent reads .github/instructions/yeah.local.instructions.md before starting work" |
 | human | 人間 | Human user interacting with the ai-agent, especially in contexts contrasting with ai-agent behavior | "The human provides instructions through dev-log files" |
 | Swap Directory | スワップディレクトリ | Git-ignored directory (`.agdocs/swap/`) for temporary working files and dev-logs | "Dev-logs are stored in the swap directory" |
 | Command File | コマンドファイル | Markdown file in `.agdocs/commands/` that defines ai-agent behavior with detailed instructions | "Read the command file to understand the workflow" |

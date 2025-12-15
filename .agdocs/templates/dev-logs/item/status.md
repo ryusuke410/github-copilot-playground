@@ -19,7 +19,7 @@ Use the templates from `./templates/dev-logs/item/`.
 - [ ] 11. Update ../index.md to mark this dev-log as completed.
 - [ ] 12. Update status.md to mark all procedure steps as completed.
 - [ ] 13. Align understanding with human.
-- [ ] 14. Read `.agdocs/commands/yeah.md`.
+- [ ] 14. Read `.github/instructions/yeah.local.instructions.md`.
 - [ ] 15. Ask human for next actions using a script. Never end the conversation.
 
 ## Quick Links

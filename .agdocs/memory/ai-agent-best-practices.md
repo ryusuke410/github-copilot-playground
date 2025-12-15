@@ -12,7 +12,7 @@ This document contains best practices and guidelines specifically for AI agents 
 
 - **Save large command outputs to temporary files** and read them in small chunks
 - **Limit the amount of information** you load at one time
-- **Re-read critical instructions** (like `.agdocs/commands/yeah.md`) after processing large content
+- **Re-read critical instructions** (like `.github/instructions/yeah.local.instructions.md`) after processing large content
 - **Avoid interactive commands** like `less` that can cause you to get stuck. Instead of using pagers, save output to temporary files and read them in chunks
 
 ### Practical Applications
@@ -139,7 +139,7 @@ read_file file.md --offset relevant_line --limit 20
 - When noticing instruction drift
 
 **What to reload**:
-- `.agdocs/commands/yeah.md` (most critical)
+- `.github/instructions/yeah.local.instructions.md` (most critical)
 - `.agdocs/docs/memory-bank/index.md`
 - Current task's `index.md`
 

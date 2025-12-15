@@ -1,58 +1,48 @@
 # Quick Start Guide
 
-## Getting Started
+## Overview
 
-Follow these steps to begin working on this simple task:
+This guide helps you execute the simple task. Follow the Execution Procedure in [status.md](./status.md).
+
+## Getting Started
 
 ### 1. Understand the Context
 
 Read the following documents in order:
 1. [Human Instructions](./human-instructions.md) - Understand what was requested
+2. [Tasks](./tasks.md) - See the task list
 
-### 2. Review Current State
+### 2. Execute Tasks
 
-- Check the [Tasks](./tasks.md) document to see what's been completed and what's next
+1. Pick the next uncompleted task from [tasks.md](./tasks.md)
+2. Complete the task
+3. Mark it as completed with `[x]` in [tasks.md](./tasks.md)
+4. **Read [index.md](./index.md) after completing each todo item** to maintain context
+5. Update [status.md](./status.md) to reflect progress
 
-### 3. Reorganize Tasks as Needed
-
-1. Edit [tasks.md](./tasks.md) to reorder tasks based on priority or dependencies
-
-### 4. Start Working
-
-1. Pick the next task from the task list
-2. Read the task details and acceptance criteria
-3. Begin implementation
-4. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
-5. Update the task status as you progress
-
-### 5. Handle Task Modifications
+### 3. Handle Task Modifications
 
 **If human requests task additions or modifications:**
 1. **First, update [human-instructions.md](./human-instructions.md)** with the new requirements
-2. Then, reorganize and update [tasks.md](./tasks.md) accordingly
+2. Then, update [tasks.md](./tasks.md) accordingly
 3. Continue with the updated task list
 
-This ensures the human's intent is documented before task restructuring.
+### 4. Complete the Simple Task
 
-### 6. Document Progress
-
-- Update task status in [tasks.md](./tasks.md)
-- Add notes or findings to relevant documents
-- Update the status in [index.md](./index.md)
+When all tasks are done, follow the remaining steps in the Execution Procedure in [status.md](./status.md):
+1. Verify all tasks are completed
+2. Update task statuses in [tasks.md](./tasks.md)
+3. Update ../index.md to mark this simple task as completed
+4. Update [status.md](./status.md) to mark all procedure steps as completed
+5. Read `.github/instructions/yeah.local.instructions.md`
+6. Ask human for next actions using the query command
 
 ## Tips
 
-- Always read `index.md` first when resuming work
+- Always read [index.md](./index.md) first when resuming work
 - Keep tasks small and manageable
 - Document decisions and rationale as you go
-- Update the plan if the approach changes
-
-## Commands
-
-{{commands_to_run}}
 
 ## Related Resources
 
-- {{related_resource_1}}
-- {{related_resource_2}}
-- ...
+{{related_resources}}

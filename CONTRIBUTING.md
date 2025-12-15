@@ -230,6 +230,9 @@ Key directories and their purposes:
     └── memory/     # Memory bank templates
 
 .github/
+├── instructions/    # AI agent instructions
+│   ├── yeah.local.instructions.md  # Personal instructions (git-ignored)
+│   └── yeah.local.instructions.example.md  # Example template
 └── prompts/         # GitHub Copilot entry points
 
 docs/

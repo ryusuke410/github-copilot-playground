@@ -716,7 +716,7 @@ I noticed that `userId` isn't validated before the database query. If an invalid
 - Use `head`, `tail`, or line limits when reading large files
 - Don't load entire PR diffs at once if there are many files
 - Review systematically file-by-file rather than all at once
-- If you notice forgetting earlier instructions, re-read `.agdocs/commands/yeah.md`
+- If you notice forgetting earlier instructions, re-read `.github/instructions/yeah.local.instructions.md`
 
 **Pagination examples:**
 ```bash

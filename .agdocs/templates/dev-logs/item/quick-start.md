@@ -24,7 +24,7 @@ Read the following documents in order:
 1. Pick the next task from the task list
 2. Read the task details and acceptance criteria
 3. Begin implementation
-4. **After completing each task, read `.agdocs/commands/yeah.md` to maintain workflow context**
+4. **After completing each task, read `.github/instructions/yeah.local.instructions.md` to maintain workflow context**
 5. Update the task status as you progress
 
 ### 5. Handle Task Modifications

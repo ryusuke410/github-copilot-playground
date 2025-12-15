@@ -104,18 +104,18 @@ Using `templates/simple-tasks/item/index.md` as a template, create `swap/simple-
 Replace all placeholders:
 - `{{simple_task_name_slug}}` → The actual slug name
 
-#### 4b-5. Create Human Instructions File
+#### 4b-5. Create Status File
+
+Using `templates/simple-tasks/item/status.md` as a template, create `swap/simple-tasks/items/{{simple_task_name_slug}}/status.md`.
+
+Keep the status file as-is from the template initially.
+
+#### 4b-6. Create Human Instructions File
 
 Using `templates/simple-tasks/item/human-instructions.md` as a template, create `swap/simple-tasks/items/{{simple_task_name_slug}}/human-instructions.md`.
 
 Replace placeholders:
 - `{{original_user_request}}` → The user's original request text
-
-#### 4b-6. Create Status File
-
-Using `templates/simple-tasks/item/status.md` as a template, create `swap/simple-tasks/items/{{simple_task_name_slug}}/status.md`.
-
-Keep the status file as-is from the template initially.
 
 #### 4b-7. Create Tasks File
 
@@ -123,17 +123,25 @@ Using `templates/simple-tasks/item/tasks.md` as a template, create `swap/simple-
 
 **Important**: Consolidate all aspects of the human's request into a single, cohesive task list. If the human provides multiple separate requests, combine them into sub-tasks within this ONE simple task's `tasks.md`.
 
-Replace placeholder tasks with actual tasks based on the human's instructions. Convert the human's requirements into specific, actionable tasks. The number of tasks should match the actual work needed - it doesn't have to be exactly 5 tasks.
+Replace placeholder tasks with actual tasks based on the human's instructions. Convert the human's requirements into specific, actionable tasks. The number of tasks should match the actual work needed.
 
-#### 4b-8. Verify Files
+#### 4b-8. Create Quick Start File
 
-Ensure that all files were created successfully and no placeholders remain in:
-- `index.md`
-- `human-instructions.md`
-- `status.md`
-- `tasks.md`
+Using `templates/simple-tasks/item/quick-start.md` as a template, create `swap/simple-tasks/items/{{simple_task_name_slug}}/quick-start.md`.
 
-#### 4b-9. Load the Simple Task
+Replace placeholders:
+- `{{related_resources}}` → List of relevant resources (files, documentation, etc.) specific to this simple task
+
+#### 4b-9. Mark Setup Procedure as Completed
+
+Update `swap/simple-tasks/items/{{simple_task_name_slug}}/status.md` to mark steps 1-3 in the "Setup Procedure" as completed:
+```
+- [x] 1. Create human-instructions.md from template.
+- [x] 2. Create tasks.md from template.
+- [x] 3. Create quick-start.md from template.
+```
+
+#### 4b-10. Load the Simple Task
 
 Read `swap/simple-tasks/items/{{simple_task_name_slug}}/index.md` and follow the instructions within that file to begin working on the simple task.
 
@@ -149,12 +157,15 @@ AI-agent:
 2. Recognizes this as a single cohesive task (not 3 separate simple tasks)
 3. Generates slug: update-fix-and-test
 4. Creates ONE simple task directory
-5. In tasks.md, creates:
+5. Creates index.md, status.md, human-instructions.md
+6. In tasks.md, creates:
    - [ ] Task 1 - Update README with new information
    - [ ] Task 2 - Fix bug in utils.js
    - [ ] Task 3 - Add tests for utils.js
    - [ ] Task 4 - Verify all changes work together
-6. Loads index.md and begins work
+7. Creates quick-start.md with relevant resources
+8. Marks Setup Procedure (steps 1-3) as completed in status.md
+9. Loads index.md and begins work following quick-start.md
 ```
 
 ### Example 2: Continue an existing simple task

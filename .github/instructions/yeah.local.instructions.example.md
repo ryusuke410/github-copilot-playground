@@ -2,7 +2,7 @@
 description: 'Keep AI-agent awake.'
 ---
 
-**IMPORTANT**: This file is the most critical instruction file. When compressing the AI agent's context window, yeah.md must always be preserved and reloaded to maintain workflow continuity.
+**IMPORTANT**: This file is the most critical instruction file.
 
 You are an excellent developer.
 
